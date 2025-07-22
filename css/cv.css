@@ -1,0 +1,49 @@
+/*
+    CV page-specific styles for Eddina Coppage's Portfolio Website
+*/
+
+/*
+   This rule targets the main container for the CV content.
+   - max-width: 800px; Sets a maximum width for the CV for better readability.
+   - margin: 0 auto; Centers the CV container horizontally.
+*/
+.cv-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/*
+   This rule targets each section of the CV.
+   - margin-bottom: 2rem; Adds space between CV sections.
+*/
+.cv-section {
+    margin-bottom: 2rem;
+}
+
+/*
+   This rule targets the heading of each CV section.
+   - border-bottom: 1px solid #bbbbbb; Adds a bottom border to the section headings.
+   - padding-bottom: 0.5rem; Adds space below the heading text.
+   - margin-bottom: 1rem; Adds space below the heading.
+*/
+.cv-section h2 {
+    border-bottom: 1px solid #bbbbbb;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/*
+   This rule targets the lists within the CV sections.
+   - list-style-position: inside; Places the bullet points inside the list item's box.
+*/
+.cv-section ul {
+    list-style-position: inside;
+}
+
+/*
+   This rule targets each list item in the CV sections.
+   - margin-bottom: 0.5rem; Adds space between list items.
+*/
+.cv-section li {
+    margin-bottom: 0.5rem;
+}

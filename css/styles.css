@@ -1,0 +1,165 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Nunito:wght@300&display=swap');
+
+/*
+   Global Styles for Eddina Coppage's Portfolio Website
+   This file contains the foundational styles for the entire site,
+   including typography, color palette, and basic layout.
+*/
+
+/* Basic reset for all elements to ensure consistent box-sizing. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+   This rule sets the base font size to 100% of the user's browser setting,
+   which is typically 16px. Using 'rem' units elsewhere allows for responsive
+   and accessible font scaling.
+*/
+html {
+    font-size: 100%;
+}
+
+/*
+   Body styles define the default look and feel for the entire site.
+   - font-family: Sets the default text font to Nunito.
+   - color: Sets the default text color to black.
+   - background-color: Sets the default background to white.
+   - line-height: Improves readability by setting a comfortable spacing between lines of text.
+*/
+body {
+    font-family: 'Nunito', sans-serif;
+    color: #000000;
+    background-color: #FFFFFF;
+    line-height: 1.6;
+}
+
+/*
+   Heading styles define the typography for all headings (h1-h6).
+   - font-family: Sets the heading font to Cinzel.
+   - font-weight: Sets the headings to a normal font weight.
+   - margin-bottom: Adds some space below headings.
+*/
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+    font-weight: normal;
+    margin-bottom: 1rem;
+}
+
+/*
+   Anchor tag styles define the look of all links.
+   - color: Inherits the color from the parent element.
+   - text-decoration: Removes the default underline from links.
+*/
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/*
+   Image styles make images responsive by default.
+   - max-width: Ensures images never exceed the width of their container.
+   - height: auto; Maintains the aspect ratio of the image.
+*/
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/*
+   Main content wrapper to provide consistent padding and max-width.
+*/
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/*
+   Header and Footer styles
+*/
+header, footer {
+    padding: 1rem 2rem;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #bbbbbb;
+}
+
+footer {
+    border-top: 1px solid #bbbbbb;
+    border-bottom: none;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #3b3b3b;
+}
+
+/* Navigation Styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: #000000;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #3b3b3b;
+}
+
+/* Hamburger Menu for Mobile */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #000000;
+    margin: 5px 0;
+}
+
+/* Media query for mobile navigation */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Adjust as needed */
+        left: 0;
+        background-color: #FFFFFF;
+        border-top: 1px solid #bbbbbb;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 1rem 0;
+        text-align: center;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}

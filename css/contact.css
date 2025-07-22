@@ -1,0 +1,86 @@
+/*
+    Contact page-specific styles for Eddina Coppage's Portfolio Website
+*/
+
+/*
+   This rule targets the main container for the contact form.
+   - max-width: 600px; Sets a maximum width for the form for better readability.
+   - margin: 0 auto; Centers the form container horizontally.
+*/
+.contact-form-section {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/*
+   This rule targets each group of form elements (label and input).
+   - margin-bottom: 1.5rem; Adds space between form groups.
+*/
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/*
+   This rule targets the labels for the form inputs.
+   - display: block; Makes the label take up the full width of its container.
+   - margin-bottom: 0.5rem; Adds space below the label.
+   - font-family: 'Cinzel', serif; Sets the font for the labels.
+*/
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: 'Cinzel', serif;
+}
+
+/*
+   This rule targets the text inputs and textareas in the form.
+   - width: 100%; Makes the inputs take up the full width of their container.
+   - padding: 0.75rem; Adds padding inside the inputs.
+   - border: 1px solid #bbbbbb; Adds a border to the inputs.
+   - border-radius: 5px; Rounds the corners of the inputs.
+   - font-family: 'Nunito', sans-serif; Sets the font for the input text.
+   - font-size: 1rem; Sets the font size for the input text.
+*/
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #bbbbbb;
+    border-radius: 5px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+}
+
+/*
+   This rule targets the submit button of the form.
+   - display: inline-block; Allows for padding and margins.
+   - padding: 0.75rem 1.5rem; Adds padding to the button.
+   - border: 1px solid #3b3b3b; Adds a border to the button.
+   - border-radius: 5px; Rounds the corners of the button.
+   - background-color: #3b3b3b; Sets the background color of the button.
+   - color: #FFFFFF; Sets the text color of the button.
+   - font-family: 'Cinzel', serif; Sets the font for the button text.
+   - font-size: 1.1rem; Sets the font size for the button text.
+   - cursor: pointer; Changes the cursor to a pointer on hover.
+   - transition: all 0.3s ease; Adds a smooth transition on hover.
+*/
+button[type="submit"] {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #3b3b3b;
+    border-radius: 5px;
+    background-color: #3b3b3b;
+    color: #FFFFFF;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/*
+   This rule changes the background and border color of the submit button on hover.
+*/
+button[type="submit"]:hover {
+    background-color: #FFFFFF;
+    color: #3b3b3b;
+}

@@ -1,0 +1,93 @@
+/*
+    Main gallery page-specific styles for Eddina Coppage's Portfolio Website
+*/
+
+/*
+   This rule targets the grid container for the gallery items.
+   - display: grid; Creates a grid container.
+   - grid-template-columns: repeat(4, 1fr); Creates a 4-column grid with equal-width columns.
+   - gap: 1.5rem; Adds space between the grid items.
+*/
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+/*
+   This rule targets each individual item in the gallery grid.
+   - position: relative; Allows for absolute positioning of child elements.
+   - overflow: hidden; Hides any content that overflows the container.
+*/
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+}
+
+/*
+   This rule targets the images within the gallery items.
+   - width: 100%; Makes the images take up the full width of their container.
+   - height: auto; Maintains the aspect ratio of the images.
+   - display: block; Removes any extra space below the images.
+   - transition: transform 0.3s ease; Adds a smooth transition on hover.
+*/
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/*
+   This rule scales up the image on hover.
+*/
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/*
+   This rule targets the information container for each gallery item.
+   - position: absolute; Positions the info container relative to the gallery item.
+   - bottom: 0; Aligns the info container to the bottom of the gallery item.
+   - left: 0; Aligns the info container to the left of the gallery item.
+   - width: 100%; Makes the info container span the full width of the gallery item.
+   - background-color: rgba(255, 255, 255, 0.9); Adds a semi-transparent white background.
+   - padding: 1rem; Adds padding inside the info container.
+   - text-align: center; Centers the text inside the info container.
+*/
+.gallery-item-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    text-align: center;
+}
+
+/*
+   This rule targets the heading within the info container.
+   - margin-bottom: 0.5rem; Adds space below the heading.
+*/
+.gallery-item-info h3 {
+    margin-bottom: 0.5rem;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 992px) {
+    /*
+       This rule changes the grid to a 2-column layout on smaller screens.
+    */
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    /*
+       This rule changes the grid to a 1-column layout on even smaller screens.
+    */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}

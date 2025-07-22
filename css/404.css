@@ -1,0 +1,73 @@
+/*
+    404 page-specific styles for Eddina Coppage's Portfolio Website
+*/
+
+/*
+   This rule targets the main container for the 404 page content.
+   - text-align: center; Centers the content horizontally.
+   - padding: 4rem 2rem; Adds padding to the container.
+*/
+.not-found-container {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+/*
+   This rule targets the main heading (the "404" text).
+   - font-size: 6rem; Sets a large font size for the heading.
+   - color: #3b3b3b; Sets the color of the heading.
+   - margin-bottom: 1rem; Adds space below the heading.
+*/
+.not-found-container h1 {
+    font-size: 6rem;
+    color: #3b3b3b;
+    margin-bottom: 1rem;
+}
+
+/*
+   This rule targets the subheading ("Page Not Found").
+   - font-size: 2rem; Sets the font size for the subheading.
+   - margin-bottom: 1rem; Adds space below the subheading.
+*/
+.not-found-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/*
+   This rule targets the paragraph text on the 404 page.
+   - margin-bottom: 2rem; Adds space below the paragraph.
+*/
+.not-found-container p {
+    margin-bottom: 2rem;
+}
+
+/*
+   This rule targets the button on the 404 page.
+   - display: inline-block; Allows for padding and margins.
+   - padding: 0.75rem 1.5rem; Adds padding to the button.
+   - border: 1px solid #3b3b3b; Adds a border to the button.
+   - border-radius: 5px; Rounds the corners of the button.
+   - background-color: #3b3b3b; Sets the background color of the button.
+   - color: #FFFFFF; Sets the text color of the button.
+   - font-family: 'Cinzel', serif; Sets the font for the button text.
+   - transition: all 0.3s ease; Adds a smooth transition on hover.
+*/
+.not-found-container .button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #3b3b3b;
+    border-radius: 5px;
+    background-color: #3b3b3b;
+    color: #FFFFFF;
+    font-family: 'Cinzel', serif;
+    transition: all 0.3s ease;
+}
+
+/*
+   This rule changes the background and text color of the button on hover.
+*/
+.not-found-container .button:hover {
+    background-color: #FFFFFF;
+    color: #3b3b3b;
+}

@@ -1,0 +1,77 @@
+/*
+    Homepage-specific styles for Eddina Coppage's Portfolio Website
+*/
+
+/*
+   This rule targets the hero section of the homepage.
+   - width: 100%; Makes the hero section span the full width of its container.
+   - height: calc(100vh - 120px); Calculates the height of the hero section to be the full viewport height minus the height of the header and footer.
+   - position: relative; Allows for absolute positioning of child elements.
+*/
+.hero {
+    width: 100%;
+    height: calc(100vh - 120px); /* Adjust as needed */
+    position: relative;
+    overflow: hidden;
+}
+
+/*
+   This rule targets the hero image container.
+   - width: 100%;
+   - height: 100%;
+   - background-image: Sets the background image of the hero section.
+   - background-size: cover; Ensures the image covers the entire container.
+   - background-position: center; Centers the image within the container.
+   - transition: opacity 1s ease-in-out; Adds a fade transition for the image rotation.
+*/
+.hero-image {
+    width: 100%;
+    height: 100%;
+    background-image: url('https://placehold.co/1920x1080/3b3b3b/ffffff?text=Image+1');
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1s ease-in-out;
+}
+
+/*
+   This rule targets the overlay on the hero image.
+   - position: absolute; Positions the overlay relative to the hero section.
+   - top: 0;
+   - left: 0;
+   - width: 100%;
+   - height: 100%;
+   - background-color: rgba(0, 0, 0, 0.3); Adds a semi-transparent black overlay.
+   - display: flex;
+   - justify-content: center;
+   - align-items: center;
+   - text-align: center;
+*/
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/*
+   This rule targets the heading within the hero overlay.
+   - color: #FFFFFF; Sets the text color to white.
+   - font-size: 4rem; Sets a large font size for the heading.
+*/
+.hero-overlay h1 {
+    color: #FFFFFF;
+    font-size: 4rem;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .hero-overlay h1 {
+        font-size: 3rem;
+    }
+}
