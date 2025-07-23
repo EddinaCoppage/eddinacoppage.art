@@ -1,7 +1,7 @@
 /*
     Global JavaScript for Eddina Coppage's Portfolio Website
     This file will contain scripts that are used across the entire site,
-    such as the mobile navigation toggle.
+    such as the mobile navigation toggle and the new parallax effect.
 */
 
 // Wait for the DOM to be fully loaded before running scripts.

@@ -1,89 +1,52 @@
-/*
-    Homepage-specific styles for Eddina Coppage's Portfolio Website
-*/
-
-/*
-   This rule targets each parallax section.
-   - min-height: 100vh; Sets the minimum height of each section to the full viewport height.
-   - background-attachment: fixed; This is the key to the parallax effect. The background image is fixed relative to the viewport.
-   - background-position: center; Centers the background image.
-   - background-repeat: no-repeat; Prevents the background image from repeating.
-   - background-size: cover; Ensures the background image covers the entire section.
-   - position: relative; Allows for absolute positioning of child elements.
-*/
-.parallax {
-    min-height: 100vh;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
 }
 
-/*
-   This rule targets the overlay on each parallax section.
-   - position: absolute; Positions the overlay relative to the parallax section.
-   - top: 0;
-   - left: 0;
-   - width: 100%;
-   - height: 100%;
-   - background-color: rgba(0, 0, 0, 0.3); Adds a semi-transparent black overlay.
-   - display: flex;
-   - justify-content: center;
-   - align-items: center;
-   - text-align: center;
-*/
-.parallax-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+main {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
-/*
-   This rule targets the headings within the parallax overlay.
-   - color: #FFFFFF; Sets the text color to white.
-   - font-size: 4rem; Sets a large font size for the headings.
-*/
-.parallax-overlay h1,
-.parallax-overlay h2 {
-    color: #FFFFFF;
-    font-size: 4rem;
+/* Each hero block takes full viewport */
+.hero-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-/*
-   These rules set the background images for each of the five parallax sections.
-*/
-.parallax-1 {
-    background-image: url('../images/featured-1.jpg');
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 120vh; /* Bigger than screen to allow movement */
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: translateY(0);
+  will-change: transform;
+  transition: transform 0.1s ease-out;
 }
 
-.parallax-2 {
-    background-image: url('../images/featured-2.jpg');
-}
 
-.parallax-3 {
-    background-image: url('../images/featured-3.jpg');
-}
+/* Mobile background images */
+.featured-1 { background-image: url('../images/featured-1-mobile.jpg'); }
+.featured-2 { background-image: url('../images/featured-2-mobile.jpg'); }
+.featured-3 { background-image: url('../images/featured-3-mobile.jpg'); }
+.featured-4 { background-image: url('../images/featured-4-mobile.jpg'); }
+.featured-5 { background-image: url('../images/featured-5-mobile.jpg'); }
 
-.parallax-4 {
-    background-image: url('../images/featured-4.jpg');
-}
-
-.parallax-5 {
-    background-image: url('../images/featured-5.jpg');
-}
-
-/* Media query for smaller screens */
-@media (max-width: 768px) {
-    .parallax-overlay h1,
-    .parallax-overlay h2 {
-        font-size: 3rem;
-    }
+/* Desktop background images */
+@media (min-width: 769px) {
+  .featured-1 { background-image: url('../images/featured-1-desktop.jpg'); }
+  .featured-2 { background-image: url('../images/featured-2-desktop.jpg'); }
+  .featured-3 { background-image: url('../images/featured-3-desktop.jpg'); }
+  .featured-4 { background-image: url('../images/featured-4-desktop.jpg'); }
+  .featured-5 { background-image: url('../images/featured-5-desktop.jpg'); }
 }
