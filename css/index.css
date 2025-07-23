@@ -3,39 +3,26 @@
 */
 
 /*
-   This rule targets the hero section of the homepage.
-   - width: 100%; Makes the hero section span the full width of its container.
-   - height: calc(100vh - 120px); Calculates the height of the hero section to be the full viewport height minus the height of the header and footer.
+   This rule targets each parallax section.
+   - min-height: 100vh; Sets the minimum height of each section to the full viewport height.
+   - background-attachment: fixed; This is the key to the parallax effect. The background image is fixed relative to the viewport.
+   - background-position: center; Centers the background image.
+   - background-repeat: no-repeat; Prevents the background image from repeating.
+   - background-size: cover; Ensures the background image covers the entire section.
    - position: relative; Allows for absolute positioning of child elements.
 */
-.hero {
-    width: 100%;
-    height: calc(100vh - 120px); /* Adjust as needed */
-    position: relative;
-    overflow: hidden;
-}
-
-/*
-   This rule targets the hero image container.
-   - width: 100%;
-   - height: 100%;
-   - background-image: Sets the background image of the hero section.
-   - background-size: cover; Ensures the image covers the entire container.
-   - background-position: center; Centers the image within the container.
-   - transition: opacity 1s ease-in-out; Adds a fade transition for the image rotation.
-*/
-.hero-image {
-    width: 100%;
-    height: 100%;
-    background-image: url('https://placehold.co/1920x1080/3b3b3b/ffffff?text=Image+1');
-    background-size: cover;
+.parallax {
+    min-height: 100vh;
+    background-attachment: fixed;
     background-position: center;
-    transition: opacity 1s ease-in-out;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 
 /*
-   This rule targets the overlay on the hero image.
-   - position: absolute; Positions the overlay relative to the hero section.
+   This rule targets the overlay on each parallax section.
+   - position: absolute; Positions the overlay relative to the parallax section.
    - top: 0;
    - left: 0;
    - width: 100%;
@@ -46,7 +33,7 @@
    - align-items: center;
    - text-align: center;
 */
-.hero-overlay {
+.parallax-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -60,18 +47,43 @@
 }
 
 /*
-   This rule targets the heading within the hero overlay.
+   This rule targets the headings within the parallax overlay.
    - color: #FFFFFF; Sets the text color to white.
-   - font-size: 4rem; Sets a large font size for the heading.
+   - font-size: 4rem; Sets a large font size for the headings.
 */
-.hero-overlay h1 {
+.parallax-overlay h1,
+.parallax-overlay h2 {
     color: #FFFFFF;
     font-size: 4rem;
 }
 
+/*
+   These rules set the background images for each of the five parallax sections.
+*/
+.parallax-1 {
+    background-image: url('../images/featured-1.jpg');
+}
+
+.parallax-2 {
+    background-image: url('../images/featured-2.jpg');
+}
+
+.parallax-3 {
+    background-image: url('../images/featured-3.jpg');
+}
+
+.parallax-4 {
+    background-image: url('../images/featured-4.jpg');
+}
+
+.parallax-5 {
+    background-image: url('../images/featured-5.jpg');
+}
+
 /* Media query for smaller screens */
 @media (max-width: 768px) {
-    .hero-overlay h1 {
+    .parallax-overlay h1,
+    .parallax-overlay h2 {
         font-size: 3rem;
     }
 }

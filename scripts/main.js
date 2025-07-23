@@ -17,24 +17,4 @@ document.addEventListener('DOMContentLoaded', () => {
         // This will show or hide the navigation links on mobile.
         navLinks.classList.toggle('active');
     });
-
-    // --- Homepage Hero Image Rotation ---
-    const heroImage = document.querySelector('.hero-image');
-    if (heroImage) {
-        const images = [
-            'https://placehold.co/1920x1080/3b3b3b/ffffff?text=Image+1',
-            'https://placehold.co/1920x1080/bbbbbb/000000?text=Image+2',
-            'https://placehold.co/1920x1080/ffffff/000000?text=Image+3'
-        ];
-        let currentImageIndex = 0;
-
-        setInterval(() => {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            heroImage.style.opacity = 0;
-            setTimeout(() => {
-                heroImage.style.backgroundImage = `url('${images[currentImageIndex]}')`;
-                heroImage.style.opacity = 1;
-            }, 1000); // This should match the transition duration in the CSS
-        }, 5000); // Change image every 5 seconds
-    }
 });
