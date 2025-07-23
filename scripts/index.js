@@ -1,20 +1,44 @@
-window.addEventListener("scroll", () => {
-  const windowHeight = window.innerHeight;
+// Debug and test parallax effect
+function updateParallax() {
+  const scrollY = window.pageYOffset;
 
-  document.querySelectorAll(".hero-section").forEach((section, index) => {
-    const bg = section.querySelector(".parallax-bg");
-    if (!bg) return;
+  const parallaxElements = document.querySelectorAll(".parallax-bg");
 
-    const rect = section.getBoundingClientRect();
-    const sectionTop = rect.top;
-    const sectionHeight = rect.height;
-
-    // Only apply parallax if section is in viewport
-    if (sectionTop < windowHeight && sectionTop + sectionHeight > 0) {
-      const scrollPercent = (windowHeight - sectionTop) / (windowHeight + sectionHeight);
-      const shift = (scrollPercent - 0.5) * 60; // adjust intensity (try 30–100)
-
-      bg.style.transform = `translateY(${shift}px)`;
+  parallaxElements.forEach((bg, index) => {
+    // Parallax calculation: background moves slower than scroll
+    const parallaxSpeed = -0.3; // Negative for reverse scroll effect
+    const yPos = scrollY * parallaxSpeed;
+    
+    bg.style.transform = `translateY(${yPos}px)`;
+    
+    // Debug logging for first element only
+    if (index === 0 && scrollY % 50 === 0) { // Log every 50px of scroll to reduce spam
+      console.log(`Scroll: ${scrollY}, Transform: ${yPos}px`);
     }
   });
+}
+
+// Throttled scroll event for better performance
+let ticking = false;
+window.addEventListener("scroll", () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      updateParallax();
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
+// Initial setup
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM loaded - Parallax backgrounds found:", document.querySelectorAll(".parallax-bg").length);
+  
+  // Add a red tint to first element to confirm we can modify it
+  const testElement = document.querySelector(".parallax-bg");
+  if (testElement) {
+    testElement.style.backgroundColor = "rgba(255, 0, 0, 0.1)"; // Very light red overlay
+  }
+  
+  updateParallax();
 });
