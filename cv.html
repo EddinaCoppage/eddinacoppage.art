@@ -10,21 +10,45 @@
 
     <meta property="og:title" content="Eddina Coppage | CV">
     <meta property="og:description" content="Curriculum Vitae for Eddina Coppage, a Texas-based artist.">
-    <meta property="og:image" content="images/social-sharing.jpg"> <!-- Placeholder -->
-    <meta property="og:url" content="https://eddinacoppage.art/cv.html">
+    <meta property="og:image" content="images/social-sharing.jpg"> <meta property="og:url" content="https://eddinacoppage.art/cv.html">
     <meta property="og:type" content="website">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Eddina Coppage | CV">
     <meta name="twitter:description" content="Curriculum Vitae for Eddina Coppage, a Texas-based artist.">
-    <meta name="twitter:image" content="images/social-sharing.jpg"> <!-- Placeholder -->
-
-    <link rel="icon" href="icons/favicon.ico" sizes="any">
+    <meta name="twitter:image" content="images/social-sharing.jpg"> <link rel="icon" href="icons/favicon.ico" sizes="any">
     <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/cv.css">
+
+    <style>
+        /* Styles for the CV download button */
+        .cv-container {
+            position: relative; /* This is necessary to position the download button absolutely within this container. */
+        }
+
+        .download-cv-btn {
+            position: absolute;
+            top: 1.5rem; /* Adjust positioning as needed */
+            right: 1.5rem; /* Adjust positioning as needed */
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            color: #333; /* Icon color */
+            transition: color 0.3s ease;
+        }
+
+        .download-cv-btn:hover {
+            color: #000; /* Darker color on hover */
+        }
+
+        .download-cv-btn svg {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 
     <script src="scripts/main.js" defer></script>
 </head>
@@ -49,9 +73,12 @@
 
     <main class="cv-container">
         <h1>Curriculum Vitae</h1>
+        <a href="files/EddinaCoppage-CurriculumVitae.pdf" download="Eddina Coppage - Curriculum Vitae.pdf" class="download-cv-btn" aria-label="Download CV as PDF" title="Download CV as PDF">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        </a>
         <p><strong>Eddina Coppage</strong></p>
         <p><a href="mailto:eddinacoppageart@gmail.com">eddinacoppageart@gmail.com</a></p>
-
+        <br>
         <section class="cv-section">
             <h2>EDUCATION & TRAINING</h2>
             <ul>
@@ -65,6 +92,16 @@
             <h2>GALLERY EXPERIENCE</h2>
             <ul>
                 <li>2025 Weil Gallery, Gallery Attendant, art Handler, and Installer, Corpus Christi, TX</li>
+            </ul>
+        </section>
+
+        <section class="cv-section">
+            <h2>CURATIONS</h2>
+            <ul>
+                <li>2025 President's Circle - Weil Gallery</li>
+                <li>Regeneration - Weil Gallery</li>
+                <li>La Marenda - Weil Gallery</li>
+                <li>Entre Búsquedas y Encuentros - Weil Gallery</li>
             </ul>
         </section>
 
@@ -129,23 +166,13 @@
         </section>
 
         <section class="cv-section">
-            <h2>CURATIONS</h2>
-            <ul>
-                <li>2025 President’s Circle - Weil Gallery</li>
-                <li>Regeneration - Weil Gallery</li>
-                <li>La Marenda - Weil Gallery</li>
-                <li>Entre Búsquedas y Encuentros - Weil Gallery</li>
-            </ul>
-        </section>
-
-        <section class="cv-section">
             <h2>SKILLS</h2>
-            <p>Sculpting (Wood/ Metal/ Clay), Mold Making (Silicone & Slip Casts), Photography, Ceramics, Drawing, Painting, Printmaking, Welding, Metal Casting, Art Handling, Frame Building, Gallery Installation/De-installation, Project Management, Problem-Solving, Attention to Detail,</p>
+            <p>Sculpting (Wood/Metal/Clay), Mold Making (Silicone & Slip Casts), Photography, Ceramics, Drawing, Painting, Printmaking, Welding, Metal Casting, Art Handling, Frame Building, Gallery Installation/De-installation, Project Management, Problem-Solving, Attention to Detail,</p>
         </section>
 
         <section class="cv-section">
             <h2>SOFTWARE</h2>
-            <p>Photoshop, Meshmixer, Illustrator, ClipStudioPaint</p>
+            <p>Photoshop, Meshmixer, Illustrator, ClipStudioPaint, Bridge</p>
         </section>
     </main>
 
