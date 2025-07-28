@@ -25,6 +25,7 @@ body {
     color: #000000;
     background-color: #FFFFFF;
     line-height: 1.6;
+    margin-top: 80px; /* Adjust based on header height */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -57,13 +58,37 @@ main {
    Header and Footer styles
 */
 header {
-    padding: 1rem 2rem;
-    background-color: #FFFFFF;
-    border-bottom: 1px solid #bbbbbb;
-    position: sticky;
+    padding: 1.5rem 2rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(187, 187, 187, 0.3);
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
     width: 100%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    min-height: 60px; /* Ensure consistent minimum height */
+}
+
+/* Scrolled state for header */
+header.scrolled {
+    padding: 1.2rem 2rem;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(187, 187, 187, 0.2);
+}
+
+/* Add top margin to body to account for fixed header */
+body {
+    font-family: 'Nunito', sans-serif;
+    color: #000000;
+    background-color: #FFFFFF;
+    line-height: 1.6;
+    margin-top: 100px; /* Increased to accommodate larger header */
 }
 
 footer {
@@ -82,6 +107,19 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.3s ease;
+}
+
+.site-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    font-weight: normal;
+    color: #000000;
+    transition: color 0.3s ease;
+}
+
+.site-title:hover {
+    color: #3b3b3b;
 }
 
 .nav-links {
@@ -90,26 +128,69 @@ nav {
     flex-direction: column;
     width: 100%;
     position: absolute;
-    top: 60px; /* Adjust as needed */
+    top: 100%;
     left: 0;
-    background-color: #FFFFFF;
-    border-top: 1px solid #bbbbbb;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(187, 187, 187, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-links.active {
     display: flex; /* Shown when 'active' class is added */
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .nav-links li {
-    margin: 1rem 0;
+    margin: 0.5rem 0;
     text-align: center;
+    transform: translateY(10px);
+    opacity: 0;
+    animation: slideIn 0.3s ease forwards;
+}
+
+.nav-links li:nth-child(1) { animation-delay: 0.05s; }
+.nav-links li:nth-child(2) { animation-delay: 0.1s; }
+.nav-links li:nth-child(3) { animation-delay: 0.15s; }
+.nav-links li:nth-child(4) { animation-delay: 0.2s; }
+.nav-links li:nth-child(5) { animation-delay: 0.25s; }
+
+@keyframes slideIn {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .nav-links a {
     font-family: 'Cinzel', serif;
     font-size: 1.1rem;
     color: #000000;
-    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    display: block;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background-color: #3b3b3b;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+    width: 80%;
 }
 
 .nav-links a:hover {
@@ -119,32 +200,122 @@ nav {
 .hamburger {
     display: block; /* Visible by default for mobile */
     cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1001;
 }
 
 .hamburger div {
     width: 25px;
-    height: 3px;
+    height: 2px;
     background-color: #000000;
-    margin: 5px 0;
+    margin: 6px 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+/* Hamburger animation */
+.hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active div:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* Media query for desktop navigation (min-width: 769px) 
 */
 @media (min-width: 769px) {
+    nav {
+        justify-content: center;
+        position: relative;
+    }
+
+    .site-title {
+        position: absolute;
+        left: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
     .nav-links {
         display: flex; /* Always shown on desktop */
         flex-direction: row;
         width: auto;
         position: static;
         border-top: none;
+        background-color: transparent;
+        backdrop-filter: none;
+        box-shadow: none;
+        padding: 0;
+        transform: none;
+        opacity: 1;
+        justify-content: center;
+        align-items: center;
     }
 
     .nav-links li {
-        margin-left: 2rem;
-        text-align: left;
+        margin: 0;
+        text-align: center;
+        transform: none;
+        opacity: 1;
+        animation: none;
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Remove the ::after pseudo-element for pipe dividers */
+    .nav-links li:not(:last-child)::after {
+        display: none;
+    }
+
+    /* Add pipe dividers as separate elements between nav items */
+    .nav-links li:not(:last-child) {
+        margin-right: 15px;
+    }
+
+    .nav-links li:not(:last-child):after {
+        content: '|';
+        margin-left: 15px;
+        color: #bbbbbb;
+        font-size: 2rem; /* Much larger than link font */
+        font-weight: 300;
+        pointer-events: none;
+        display: inline-block;
+        line-height: 1;
+    }
+
+    .nav-links a {
+        padding: 0.5rem 0;
+        font-size: 1.1rem; /* Base font size increased */
+        letter-spacing: 0.02em;
+        transition: all 0.3s ease;
+    }
+
+    /* Curved font-size effect - larger in center, smaller on edges */
+    .nav-links li:nth-child(1) a { font-size: 1.0rem; } /* Home */
+    .nav-links li:nth-child(2) a { font-size: 1.15rem; } /* Gallery */
+    .nav-links li:nth-child(3) a { font-size: 1.3rem; } /* Bio - largest (center) */
+    .nav-links li:nth-child(4) a { font-size: 1.15rem; } /* CV */
+    .nav-links li:nth-child(5) a { font-size: 1.0rem; } /* Contact */
+
+    .nav-links a::after {
+        bottom: -2px;
+        height: 1px;
     }
 
     .hamburger {
         display: none; /* Hidden on desktop */
+    }
+
+    /* Desktop hover effects */
+    .nav-links a:hover {
+        transform: translateY(-1px);
+        color: #3b3b3b;
     }
 }

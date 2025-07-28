@@ -3,17 +3,29 @@ html, body {
   padding: 0;
   width: 100vw;
   overflow-x: hidden;
+  height: 100vh;
+  overflow-y: hidden; /* Prevent default scrolling */
 }
 
 main {
   width: 100vw;
   margin: 0;
   padding: 0;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Container for sliding hero sections */
+.hero-container {
+  position: relative;
+  width: 100vw;
+  height: 500vh; /* 5 sections × 100vh */
 }
 
 /* Each hero block takes full viewport */
 .hero-section {
-  position: relative;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -21,7 +33,33 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transform: translateY(100vh); /* Start below viewport */
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Optional: subtle box-shadow for depth on hero */
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
 }
+
+/* First section starts visible */
+.hero-section:first-child {
+  transform: translateY(0);
+  z-index: 1;
+}
+
+/* Active section slides up to cover */
+.hero-section.active {
+  transform: translateY(0);
+}
+
+/* Set z-index based on section order - later sections appear on top */
+.hero-section:nth-child(1) { z-index: 1; }
+.hero-section:nth-child(2) { z-index: 2; }
+.hero-section:nth-child(3) { z-index: 3; }
+.hero-section:nth-child(4) { z-index: 4; }
+.hero-section:nth-child(5) { z-index: 5; }
 
 .parallax-bg {
   position: absolute;
@@ -33,8 +71,18 @@ main {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed; /* CSS-only parallax */
+
+  /* Smooth animation support */
+  will-change: transform;
 }
 
+/* Specific class added by JS to activate rotation animation */
+.parallax-bg.rotating {
+  /* Ensures GPU handles the animation smoothly */
+  transition: transform 0.1s ease-out;
+  transform-origin: center center;
+  scale: 1.05; /* Slight scale for dimensionality */
+}
 
 /* Mobile background images */
 .featured-1 { background-image: url('../images/featured-1-mobile.jpg'); }
@@ -50,4 +98,463 @@ main {
   .featured-3 { background-image: url('../images/featured-3-desktop.jpg'); }
   .featured-4 { background-image: url('../images/featured-4-desktop.jpg'); }
   .featured-5 { background-image: url('../images/featured-5-desktop.jpg'); }
+}
+
+/* HERO BUTTON STYLE */
+.hero-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.7em 2em;
+  background: rgba(255,255,255,0.13);
+  border: 1.5px solid #fff;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  backdrop-filter: blur(2px);
+}
+.hero-btn:hover,
+.hero-btn:focus {
+  background: #fff;
+  color: #222;
+  border-color: #fff;
+}
+
+/* HERO CONTENT (centered, fade-in) */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInHero 1.2s ease 0.2s forwards;
+}
+.hero-content h1, .hero-content h2 {
+  margin: 0 0 0.5em 0;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+.hero-content p {
+  margin: 0 0 1em 0;
+  font-size: 1.15rem;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.13);
+}
+
+@keyframes fadeInHero {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* STACKING SLIDE ANIMATIONS FOR CONTENT (faster, simultaneous) */
+@keyframes slideUpFromBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUpFromBottomTitle {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* HERO OVERLAY */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.25);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* HERO SECTION - Remove duplicate definition */
+
+/* PARALLAX BG */
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  will-change: transform;
+}
+
+/* PARALLAX ROTATION (optional, can be removed for static) */
+.parallax-bg.rotating {
+  transition: transform 0.1s ease-out;
+  transform-origin: center center;
+  scale: 1.05;
+}
+
+/* PARALLAX ANIMATIONS FOR CONTENT */
+@keyframes scrollInFromBottom {
+  from {
+    transform: translateY(100px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollInFromBottomTitle {
+  from {
+    transform: translateY(80px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* First hero title stacking slide animation */
+.hero-section:first-child .hero-content h1 {
+  font-size: 4rem; /* Much larger, striking title */
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  transform: translateY(100%);
+  opacity: 0;
+  animation: slideUpFromBottomTitle 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  will-change: transform, opacity;
+}
+
+/* Gallery showcase container stacking slide animation */
+.gallery-showcase-container {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 4rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 900px;
+  width: 95%;
+  transform: translateY(100%);
+  opacity: 0;
+  text-align: center;
+  will-change: transform, opacity;
+  animation-fill-mode: both;
+}
+
+.gallery-showcase-container.animate {
+  animation: slideUpFromBottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Contact form container stacking slide animation */
+.contact-form-container {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 500px;
+  width: 90%;
+  transform: translateY(100%);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation-fill-mode: both;
+}
+
+.contact-form-container.animate {
+  animation: slideUpFromBottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Enhanced parallax effect during scroll */
+.hero-section.active .gallery-showcase-container,
+.hero-section.active .contact-form-container {
+  transition: transform 0.1s ease-out;
+}
+
+/* RESPONSIVE: reduce overlay and padding on mobile */
+@media (max-width: 768px) {
+  .hero-section::before {
+    background: rgba(0,0,0,0.13);
+  }
+  .hero-content {
+    padding: 1.2rem;
+  }
+  .hero-content h1, .hero-content h2 {
+    font-size: 1.3rem;
+  }
+  .hero-btn {
+    font-size: 1rem;
+    padding: 0.6em 1.5em;
+  }
+}
+
+/* Remove scroll bounce on mobile, prevent unwanted whitespace */
+body {
+  overscroll-behavior: none;
+  background: #fff;
+}
+
+/* Override body margin for index page with sliding sections */
+body.index-page {
+  margin-top: 0;
+}
+
+/* CONTACT HERO SPECIFIC STYLES */
+.contact-hero {
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-form-container {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 500px;
+  width: 90%;
+  animation: none; /* Override the default fade-in animation */
+  opacity: 1;
+  transform: none;
+}
+
+.contact-form-container h2 {
+  color: #333;
+  margin-bottom: 0.5rem;
+  text-shadow: none;
+}
+
+.contact-form-container p {
+  color: #666;
+  margin-bottom: 2rem;
+  text-shadow: none;
+}
+
+.contact-form-container .form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.contact-form-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+.contact-form-container input,
+.contact-form-container textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  transition: border-color 0.2s, background 0.2s;
+  box-sizing: border-box;
+}
+
+.contact-form-container input:focus,
+.contact-form-container textarea:focus {
+  outline: none;
+  border-color: #333;
+  background: rgba(255, 255, 255, 1);
+}
+
+.contact-form-container button {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+.contact-form-container button:hover {
+  background: #555;
+  transform: translateY(-1px);
+}
+
+/* Responsive adjustments for contact form */
+@media (max-width: 768px) {
+  .contact-form-container {
+    padding: 2rem;
+    margin: 1rem;
+    width: calc(100% - 2rem);
+  }
+}
+
+/* GALLERY HERO SPECIFIC STYLES */
+.gallery-hero {
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-showcase-container {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 4rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 900px;
+  width: 95%;
+  animation: none; /* Override the default fade-in animation */
+  opacity: 1;
+  transform: none;
+  text-align: center;
+}
+
+.gallery-showcase-container h2 {
+  color: #333;
+  margin-bottom: 0.5rem;
+  text-shadow: none;
+}
+
+.gallery-showcase-container p {
+  color: #666;
+  margin-bottom: 2rem;
+  text-shadow: none;
+}
+
+.featured-works {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.featured-work {
+  width: 200px;
+  height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-work:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+}
+
+.featured-work img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-showcase-container .hero-btn {
+  background: #333;
+  color: white;
+  border: 1px solid #333;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.gallery-showcase-container .hero-btn:hover {
+  background: #555;
+  color: white;
+  border-color: #555;
+  transform: translateY(-1px);
+}
+
+/* Responsive adjustments for gallery showcase */
+@media (max-width: 768px) {
+  .gallery-showcase-container {
+    padding: 3rem;
+    margin: 1rem;
+    width: calc(100% - 2rem);
+    max-width: 700px;
+  }
+  
+  .featured-works {
+    gap: 2rem;
+  }
+  
+  .featured-work {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-showcase-container {
+    padding: 2rem;
+  }
+  
+  .featured-works {
+    gap: 1.5rem;
+  }
+  
+  .featured-work {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+/* First hero section - larger title */
+.hero-section:first-child .hero-content h1 {
+  font-size: 4rem; /* Much larger, striking title */
+  font-weight: bold;
+  letter-spacing: 0.02em;
+}
+
+/* Responsive adjustments for the large title */
+@media (max-width: 768px) {
+  .hero-section:first-child .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .gallery-showcase-container {
+    padding: 3rem;
+    margin: 1rem;
+    width: calc(100% - 2rem);
+    max-width: 700px;
+  }
+  
+  .contact-form-container {
+    padding: 2rem;
+    margin: 1rem;
+    width: calc(100% - 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section:first-child .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .gallery-showcase-container {
+    padding: 2rem;
+  }
 }
