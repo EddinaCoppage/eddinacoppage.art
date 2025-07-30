@@ -1,7 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
+<html lang="en">  <header>
+    <nav>
+      <a href="index.html" class="site-title">EC</a>
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="collections/index.html">GALLERY</a></li>
+        <li><a href="bio.html">BIO</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>harset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Eddina Coppage | Home</title>
@@ -32,7 +46,7 @@
 <body class="index-page">
   <header>
     <nav>
-      <a href="index.html" class="site-title">Eddina Coppage</a>
+      <a href="index.html" class="site-title">EC</a>
       <div class="hamburger">
         <div></div>
         <div></div>
@@ -54,7 +68,15 @@
       <div class="hero-section active">
         <div class="parallax-bg featured-1 rotating"></div>
         <div class="hero-content">
-          <h1>Eddina Coppage</h1>
+          <h1 id="hero-title">
+            <div class="first-name">
+              <span class="letter">E</span><span class="letter">d</span><span class="letter">d</span><span class="letter">i</span><span class="letter">n</span><span class="letter">a</span>
+            </div>
+            <div class="middle-space"></div>
+            <div class="last-name">
+              <span class="letter">C</span><span class="letter">o</span><span class="letter">p</span><span class="letter">p</span><span class="letter">a</span><span class="letter">g</span><span class="letter">e</span>
+            </div>
+          </h1>
         </div>
       </div>
 
@@ -62,7 +84,7 @@
         <div class="parallax-bg featured-2 rotating"></div>
         <div class="hero-content gallery-hero">
           <div class="gallery-showcase-container">
-            <h2>Gallery</h2>
+            <h2>GALLERY</h2>
             <p>Explore selected works</p>
             
             <div class="featured-works">
@@ -74,7 +96,7 @@
               </div>
             </div>
             
-            <a href="collections/index.html" class="hero-btn">View Full Gallery</a>
+            <a href="collections/index.html" class="hero-btn">VIEW FULL GALLERY</a>
           </div>
         </div>
       </div>
@@ -82,9 +104,11 @@
       <div class="hero-section">
         <div class="parallax-bg featured-3 rotating"></div>
         <div class="hero-content">
-          <h2>About</h2>
-          <p>Learn more about Eddina</p>
-          <a href="bio.html" class="hero-btn">Bio</a>
+          <div class="about-bio-container">
+            <h2>ABOUT</h2>
+            <p class="bio-summary">Eddina Coppage is a multidisciplinary artist whose work explores themes of identity, culture, and personal narrative through painting and mixed media. Her practice bridges traditional techniques with contemporary perspectives, creating vibrant compositions that speak to the complexities of modern life. Based in Texas, she draws inspiration from her surroundings and experiences to create art that resonates with diverse audiences.</p>
+            <a href="bio.html" class="hero-btn">BIO</a>
+          </div>
         </div>
       </div>
 
@@ -101,7 +125,7 @@
         <div class="parallax-bg featured-5 rotating"></div>
         <div class="hero-content contact-hero">
           <div class="contact-form-container">
-            <h2>Contact</h2>
+            <h2>CONTACT</h2>
             <p>Get in touch for commissions, inquiries, or collaborations</p>
             <form action="https://formspree.io/f/your-form-id" method="POST">
               <div class="form-group">

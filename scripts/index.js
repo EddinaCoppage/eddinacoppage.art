@@ -138,7 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
     heroSections.forEach((section) => {
       const galleryContainer = section.querySelector('.gallery-showcase-container');
       const contactContainer = section.querySelector('.contact-form-container');
+      const aboutContainer = section.querySelector('.about-bio-container');
       const heroTitle = section.querySelector('h1');
+      const letters = section.querySelectorAll('.letter');
       
       if (galleryContainer) {
         galleryContainer.classList.remove('animate');
@@ -151,18 +153,34 @@ document.addEventListener("DOMContentLoaded", () => {
       if (contactContainer) {
         contactContainer.classList.remove('animate');
         contactContainer.style.animation = 'none';
-        contactContainer.style.transform = 'translateY(100%)';
+        contactContainer.style.transform = 'translateX(-100%)';
         contactContainer.style.opacity = '0';
         // Force reflow to reset animation
         contactContainer.offsetHeight;
       }
-      if (heroTitle) {
+      if (aboutContainer) {
+        aboutContainer.classList.remove('animate');
+        aboutContainer.style.animation = 'none';
+        aboutContainer.style.transform = 'translateX(-100%)';
+        aboutContainer.style.opacity = '0';
+        // Force reflow to reset animation
+        aboutContainer.offsetHeight;
+      }
+      if (heroTitle && letters.length === 0) {
         heroTitle.style.animation = 'none';
         heroTitle.style.transform = 'translateY(100%)';
         heroTitle.style.opacity = '0';
         // Force reflow to reset animation
         heroTitle.offsetHeight;
       }
+      // Reset letter animations
+      letters.forEach((letter) => {
+        letter.style.animation = 'none';
+        letter.style.transform = 'translateY(100px)';
+        letter.style.opacity = '0';
+        // Force reflow to reset animation
+        letter.offsetHeight;
+      });
     });
     
     heroSections.forEach((section, index) => {
@@ -182,7 +200,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentHeroSection) {
       const galleryContainer = currentHeroSection.querySelector('.gallery-showcase-container');
       const contactContainer = currentHeroSection.querySelector('.contact-form-container');
+      const aboutContainer = currentHeroSection.querySelector('.about-bio-container');
       const heroTitle = currentHeroSection.querySelector('h1');
+      const letters = currentHeroSection.querySelectorAll('.letter');
       
       // Start animations immediately and simultaneously
       if (galleryContainer) {
@@ -193,9 +213,18 @@ document.addEventListener("DOMContentLoaded", () => {
         contactContainer.style.animation = '';
         contactContainer.classList.add('animate');
       }
-      if (heroTitle) {
+      if (aboutContainer) {
+        aboutContainer.style.animation = '';
+        aboutContainer.classList.add('animate');
+      }
+      if (heroTitle && letters.length === 0) {
         heroTitle.style.animation = '';
       }
+      // Start letter animations - let CSS handle the delays
+      letters.forEach((letter) => {
+        letter.style.animation = '';
+        // Let CSS handle the animation and delays
+      });
     }
 
     // Reset scrolling flag after transition

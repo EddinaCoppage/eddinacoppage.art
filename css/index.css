@@ -87,17 +87,17 @@ main {
 /* Mobile background images */
 .featured-1 { background-image: url('../images/featured-1-mobile.jpg'); }
 .featured-2 { background-image: url('../images/featured-2-mobile.jpg'); }
-.featured-3 { background-image: url('../images/featured-3-mobile.jpg'); }
+.featured-3 { background: #f5f5f5; } /* Plain background for About */
 .featured-4 { background-image: url('../images/featured-4-mobile.jpg'); }
-.featured-5 { background-image: url('../images/featured-5-mobile.jpg'); }
+.featured-5 { background: #f5f5f5; } /* Plain background for Contact */
 
 /* Desktop background images */
 @media (min-width: 769px) {
   .featured-1 { background-image: url('../images/featured-1-desktop.jpg'); }
   .featured-2 { background-image: url('../images/featured-2-desktop.jpg'); }
-  .featured-3 { background-image: url('../images/featured-3-desktop.jpg'); }
+  .featured-3 { background: #f5f5f5; } /* Plain background for About */
   .featured-4 { background-image: url('../images/featured-4-desktop.jpg'); }
-  .featured-5 { background-image: url('../images/featured-5-desktop.jpg'); }
+  .featured-5 { background: #f5f5f5; } /* Plain background for Contact */
 }
 
 /* HERO BUTTON STYLE */
@@ -170,6 +170,30 @@ main {
   }
 }
 
+/* Left-to-right reveal animation for About/Contact containers */
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Letter animation - slide up individually */
+@keyframes letterSlideUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 @keyframes slideUpFromBottomTitle {
   from {
     transform: translateY(100%);
@@ -181,15 +205,9 @@ main {
   }
 }
 
-/* HERO OVERLAY */
+/* HERO OVERLAY - Remove all overlays */
 .hero-section::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.25);
-  z-index: 1;
-  pointer-events: none;
+  display: none;
 }
 
 /* HERO SECTION - Remove duplicate definition */
@@ -234,24 +252,115 @@ main {
   }
 }
 
-/* First hero title stacking slide animation */
+/* First hero title - no animation on h1, only on letters, positioned at bottom */
+.hero-section:first-child .hero-content {
+  justify-content: flex-end;
+  padding-bottom: 4rem;
+}
+
+/* Desktop: 5-column layout for "Eddina Coppage" with broader gap */
+@media (min-width: 769px) {
+  .hero-section:first-child .hero-content {
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0;
+  }
+  
+  .hero-section:first-child .hero-content h1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    width: 100%;
+    max-width: 1400px;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .hero-section:first-child .hero-content h1 .first-name {
+    grid-column: 1;
+    justify-self: center;
+    text-align: center;
+  }
+  
+  .hero-section:first-child .hero-content h1 .last-name {
+    grid-column: 5;
+    justify-self: center;
+    text-align: center;
+  }
+}
+
 .hero-section:first-child .hero-content h1 {
-  font-size: 4rem; /* Much larger, striking title */
+  font-size: 2rem; /* Match mobile size across all devices */
   font-weight: bold;
   letter-spacing: 0.02em;
-  transform: translateY(100%);
-  opacity: 0;
-  animation: slideUpFromBottomTitle 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  will-change: transform, opacity;
+  color: #fff; /* White text color */
+  text-shadow: none; /* Remove text shadow for white text */
+  /* Remove h1 animation - only letters animate */
 }
+
+/* Letter animation styles for hero title */
+.hero-section:first-child .hero-content h1 .letter {
+  display: inline-block;
+  transform: translateY(100px);
+  opacity: 0;
+  animation: letterSlideUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation-fill-mode: both;
+}
+
+/* Mobile layout: keep original bottom positioning and inline layout */
+@media (max-width: 768px) {
+  .hero-section:first-child .hero-content {
+    justify-content: flex-end !important;
+    padding-bottom: 3rem !important;
+  }
+  
+  .hero-section:first-child .hero-content h1 {
+    display: block !important;
+    grid-template-columns: none !important;
+    width: auto !important;
+    max-width: none !important;
+    gap: 0 !important;
+  }
+  
+  .hero-section:first-child .hero-content h1 .first-name,
+  .hero-section:first-child .hero-content h1 .last-name {
+    display: inline;
+    justify-self: auto;
+    text-align: center;
+  }
+  
+  .hero-section:first-child .hero-content h1 .middle-space {
+    display: inline;
+    width: 0.3em;
+  }
+  
+  .hero-section:first-child .hero-content h1 .middle-space::after {
+    content: " ";
+  }
+}
+
+/* Letter animations with dramatic staggered delays */
+.hero-section:first-child .hero-content h1 .first-name .letter:nth-child(1) { animation-delay: 0.2s; } /* E */
+.hero-section:first-child .hero-content h1 .first-name .letter:nth-child(2) { animation-delay: 0.35s; } /* d */
+.hero-section:first-child .hero-content h1 .first-name .letter:nth-child(3) { animation-delay: 0.5s; } /* d */
+.hero-section:first-child .hero-content h1 .first-name .letter:nth-child(4) { animation-delay: 0.65s; } /* i */
+.hero-section:first-child .hero-content h1 .first-name .letter:nth-child(5) { animation-delay: 0.8s; } /* n */
+.hero-section:first-child .hero-content h1 .first-name .letter:nth-child(6) { animation-delay: 0.95s; } /* a */
+
+.hero-section:first-child .hero-content h1 .last-name .letter:nth-child(1) { animation-delay: 1.25s; } /* C */
+.hero-section:first-child .hero-content h1 .last-name .letter:nth-child(2) { animation-delay: 1.4s; } /* o */
+.hero-section:first-child .hero-content h1 .last-name .letter:nth-child(3) { animation-delay: 1.55s; } /* p */
+.hero-section:first-child .hero-content h1 .last-name .letter:nth-child(4) { animation-delay: 1.7s; } /* p */
+.hero-section:first-child .hero-content h1 .last-name .letter:nth-child(5) { animation-delay: 1.85s; } /* a */
+.hero-section:first-child .hero-content h1 .last-name .letter:nth-child(6) { animation-delay: 2.0s; } /* g */
+.hero-section:first-child .hero-content h1 .last-name .letter:nth-child(7) { animation-delay: 2.15s; } /* e */
 
 /* Gallery showcase container stacking slide animation */
 .gallery-showcase-container {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 4rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.2);
   max-width: 900px;
   width: 95%;
@@ -260,30 +369,33 @@ main {
   text-align: center;
   will-change: transform, opacity;
   animation-fill-mode: both;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .gallery-showcase-container.animate {
   animation: slideUpFromBottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
-/* Contact form container stacking slide animation */
+/* Contact form container left-to-right slide animation */
 .contact-form-container {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(200, 200, 200, 0.9);
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 3rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.2);
   max-width: 500px;
   width: 90%;
-  transform: translateY(100%);
+  transform: translateX(-100%);
   opacity: 0;
   will-change: transform, opacity;
   animation-fill-mode: both;
 }
 
 .contact-form-container.animate {
-  animation: slideUpFromBottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slideInFromLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 /* Enhanced parallax effect during scroll */
@@ -292,11 +404,8 @@ main {
   transition: transform 0.1s ease-out;
 }
 
-/* RESPONSIVE: reduce overlay and padding on mobile */
+/* RESPONSIVE: reduce padding on mobile */
 @media (max-width: 768px) {
-  .hero-section::before {
-    background: rgba(0,0,0,0.13);
-  }
   .hero-content {
     padding: 1.2rem;
   }
@@ -324,20 +433,6 @@ body.index-page {
 .contact-hero {
   align-items: center;
   justify-content: center;
-}
-
-.contact-form-container {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 3rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  max-width: 500px;
-  width: 90%;
-  animation: none; /* Override the default fade-in animation */
-  opacity: 1;
-  transform: none;
 }
 
 .contact-form-container h2 {
@@ -387,8 +482,8 @@ body.index-page {
 
 .contact-form-container button {
   background: #333;
-  color: white;
-  border: none;
+  color: #fff;
+  border: 1px solid #333;
   padding: 0.75rem 2rem;
   border-radius: 25px;
   font-size: 1rem;
@@ -418,29 +513,48 @@ body.index-page {
   justify-content: center;
 }
 
-.gallery-showcase-container {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 4rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  max-width: 900px;
-  width: 95%;
-  animation: none; /* Override the default fade-in animation */
-  opacity: 1;
-  transform: none;
-  text-align: center;
+/* Desktop: asymmetric positioning and vertical aspect ratio */
+@media (min-width: 769px) {
+  .gallery-hero {
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8vw;
+  }
+  
+  .gallery-showcase-container {
+    max-width: 30vw; /* Increase width so content fits properly */
+    width: 30vw;
+    height: 70vh; /* Increase height for better content display */
+    padding: 2rem; /* Simplified padding */
+    overflow-y: auto;
+    margin: 0;
+    position: relative;
+  }
+}
+
+/* Mobile: keep centered */
+@media (max-width: 768px) {
+  .gallery-hero {
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .gallery-showcase-container {
+    max-width: 90vw;
+    width: 90vw;
+    height: auto;
+    padding: 3rem;
+  }
 }
 
 .gallery-showcase-container h2 {
-  color: #333;
+  color: #fff;
   margin-bottom: 0.5rem;
   text-shadow: none;
 }
 
 .gallery-showcase-container p {
-  color: #666;
+  color: #fff;
   margin-bottom: 2rem;
   text-shadow: none;
 }
@@ -451,6 +565,30 @@ body.index-page {
   justify-content: center;
   margin-bottom: 3rem;
   flex-wrap: wrap;
+}
+
+/* Desktop: vertical layout for featured works */
+@media (min-width: 769px) {
+  .featured-works {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
+  .featured-work {
+    width: 100%;
+    max-width: 250px;
+    height: 180px;
+  }
+}
+
+/* Mobile: keep horizontal layout */
+@media (max-width: 768px) {
+  .featured-works {
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
 }
 
 .featured-work {
@@ -476,31 +614,20 @@ body.index-page {
 
 .gallery-showcase-container .hero-btn {
   background: #333;
-  color: white;
+  color: #fff;
   border: 1px solid #333;
   transition: background 0.2s, color 0.2s, transform 0.2s;
 }
 
 .gallery-showcase-container .hero-btn:hover {
   background: #555;
-  color: white;
+  color: #fff;
   border-color: #555;
   transform: translateY(-1px);
 }
 
-/* Responsive adjustments for gallery showcase */
+/* Responsive adjustments for gallery showcase - mobile only */
 @media (max-width: 768px) {
-  .gallery-showcase-container {
-    padding: 3rem;
-    margin: 1rem;
-    width: calc(100% - 2rem);
-    max-width: 700px;
-  }
-  
-  .featured-works {
-    gap: 2rem;
-  }
-  
   .featured-work {
     width: 160px;
     height: 160px;
@@ -522,24 +649,21 @@ body.index-page {
   }
 }
 
-/* First hero section - larger title */
+/* First hero section - consistent smaller title */
 .hero-section:first-child .hero-content h1 {
-  font-size: 4rem; /* Much larger, striking title */
+  font-size: 2rem; /* Consistent smaller size across all devices */
   font-weight: bold;
   letter-spacing: 0.02em;
 }
 
-/* Responsive adjustments for the large title */
+/* Responsive adjustments for the consistent title size */
 @media (max-width: 768px) {
-  .hero-section:first-child .hero-content h1 {
-    font-size: 2.5rem;
+  .hero-section:first-child .hero-content {
+    padding-bottom: 3rem;
   }
   
-  .gallery-showcase-container {
-    padding: 3rem;
-    margin: 1rem;
-    width: calc(100% - 2rem);
-    max-width: 700px;
+  .hero-section:first-child .hero-content h1 {
+    font-size: 2rem; /* Same size as desktop */
   }
   
   .contact-form-container {
@@ -550,11 +674,102 @@ body.index-page {
 }
 
 @media (max-width: 480px) {
+  .hero-section:first-child .hero-content {
+    padding-bottom: 2rem;
+  }
+  
   .hero-section:first-child .hero-content h1 {
+    font-size: 2rem; /* Same size as desktop */
+  }
+}
+
+/* About bio container stacking slide animation */
+.about-bio-container {
+  background: rgba(200, 200, 200, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 4rem 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: none;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform: translateX(-100%);
+  opacity: 0;
+  text-align: center;
+  will-change: transform, opacity;
+  animation-fill-mode: both;
+}
+
+.about-bio-container.animate {
+  animation: slideInFromLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.about-bio-container h2 {
+  color: #333;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-shadow: none;
+}
+
+.about-bio-container .bio-summary {
+  color: #555;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  text-align: left;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
+}
+
+.about-bio-container .hero-btn {
+  background: #333;
+  color: #fff;
+  border: 1.5px solid #333;
+  font-weight: 500;
+}
+
+.about-bio-container .hero-btn:hover {
+  background: #555;
+  color: #fff;
+  border-color: #555;
+}
+
+/* About bio container responsive adjustments */
+@media (max-width: 768px) {
+  .about-bio-container {
+    padding: 3rem 0;
+  }
+  
+  .about-bio-container h2 {
     font-size: 2rem;
   }
   
-  .gallery-showcase-container {
-    padding: 2rem;
+  .about-bio-container .bio-summary {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-bio-container {
+    padding: 2rem 0;
+  }
+  
+  .about-bio-container h2 {
+    font-size: 1.8rem;
+  }
+  
+  .about-bio-container .bio-summary {
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 0 1rem;
   }
 }
