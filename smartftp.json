@@ -1,0 +1,21 @@
+{
+  "name": "My Server",
+  "host": "eddinacoppage.art",
+  "protocol": "ftp",
+  "port": 21,
+  "username": "u138503283",
+  "password": "jtAKg@OGNL9q>H0z",
+  "remotePath": "/domains/eddinacoppage.art/public_html",
+  "uploadOnSave": true,
+  "useTempFile": false,
+  "openSsh": false,
+  "watcher": {
+    "files": "**/*",
+    "autoUpload": true,
+    "autoDelete": true,
+    "ignoreCreate": false,
+    "ignoreUpdate": false,
+    "ignoreDelete": false
+  },
+  "ignore": []
+}

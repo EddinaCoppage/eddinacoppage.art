@@ -1,21 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">  <header>
-    <nav>
-      <a href="index.html" class="site-title">EC</a>
-      <div class="hamburger">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-      <ul class="nav-links">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="collections/index.html">GALLERY</a></li>
-        <li><a href="bio.html">BIO</a></li>
-        <li><a href="cv.html">CV</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-      </ul>
-    </nav>
-  </header>harset="UTF-8" />
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Eddina Coppage | Home</title>
@@ -41,6 +27,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/index.css">
 
+  <script src="scripts/main.js" defer></script>
   <script src="scripts/index.js" defer></script>
 </head>
 <body class="index-page">
@@ -92,7 +79,10 @@
                 <img src="images/featured-1.jpg" alt="Featured artwork 1">
               </div>
               <div class="featured-work">
-                <img src="images/featured-3.jpg" alt="Featured artwork 2">
+                <img src="images/featured-crunchyroll.jpg" alt="Crunchyroll - Fine Craft">
+              </div>
+              <div class="featured-work">
+                <img src="images/featured-3.jpg" alt="Featured artwork 3">
               </div>
             </div>
             
@@ -127,7 +117,15 @@
           <div class="contact-form-container">
             <h2>CONTACT</h2>
             <p>Get in touch for commissions, inquiries, or collaborations</p>
-            <form action="https://formspree.io/f/your-form-id" method="POST">
+            <form action="https://formsubmit.co/d6d85bf68aa9465f91629e59d01e5c42" method="POST">
+              <!-- FormSubmit.co hidden inputs -->
+              <input type="hidden" name="_subject" value="New contact from eddinacoppage.art">
+              <input type="hidden" name="_captcha" value="true">
+              <input type="hidden" name="_template" value="table">
+              
+              <!-- Honeypot field (hidden from users) -->
+              <input type="text" name="_honey" style="display:none">
+              
               <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" required>
@@ -144,6 +142,7 @@
                 <label for="message">Message</label>
                 <textarea id="message" name="message" rows="4" required></textarea>
               </div>
+              
               <button type="submit">Send Message</button>
             </form>
           </div>

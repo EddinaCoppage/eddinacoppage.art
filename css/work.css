@@ -13,6 +13,157 @@
 }
 
 /*
+   This rule targets the carousel container for the artwork images.
+   - margin-bottom: 2rem; Adds space below the carousel.
+   - position: relative; Allows absolute positioning of navigation elements.
+*/
+.work-carousel {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+/*
+   This rule targets the carousel container.
+   - position: relative; Allows absolute positioning of navigation buttons.
+   - overflow: hidden; Hides slides that are out of view.
+   - border-radius: 8px; Adds rounded corners.
+*/
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/*
+   This rule targets the carousel track that holds all slides.
+   - display: flex; Creates a horizontal layout for slides.
+   - transition: transform 0.3s ease; Smooth transition between slides.
+*/
+.carousel-track {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+/*
+   This rule targets individual carousel slides.
+   - min-width: 100%; Each slide takes full width.
+   - box-sizing: border-box; Includes padding/border in width calculation.
+*/
+.carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+/*
+   This rule ensures carousel images fit properly.
+   - width: 100%; Images take full slide width.
+   - height: auto; Maintains aspect ratio.
+   - display: block; Removes default inline spacing.
+*/
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/*
+   This rule styles the navigation buttons.
+   - position: absolute; Positions buttons over the carousel.
+   - top: 50%; Centers vertically.
+   - transform: translateY(-50%); Precise vertical centering.
+   - background: rgba(0, 0, 0, 0.5); Semi-transparent background.
+   - color: white; White text/icon color.
+   - border: none; Removes default button border.
+   - width: 40px; Fixed button width.
+   - height: 40px; Fixed button height.
+   - border-radius: 50%; Circular buttons.
+   - cursor: pointer; Shows pointer on hover.
+   - font-size: 18px; Icon size.
+   - transition: background-color 0.3s ease; Smooth hover effect.
+*/
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    z-index: 10;
+}
+
+/*
+   This rule positions the previous button on the left.
+*/
+.carousel-nav.prev {
+    left: 10px;
+}
+
+/*
+   This rule positions the next button on the right.
+*/
+.carousel-nav.next {
+    right: 10px;
+}
+
+/*
+   This rule styles navigation buttons on hover.
+   - background: rgba(0, 0, 0, 0.8); Darker background on hover.
+*/
+.carousel-nav:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/*
+   This rule styles the carousel indicators container.
+   - display: flex; Horizontal layout for indicators.
+   - justify-content: center; Centers indicators.
+   - gap: 8px; Space between indicators.
+   - margin-top: 1rem; Space above indicators.
+*/
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+/*
+   This rule styles individual indicator buttons.
+   - width: 12px; Fixed indicator width.
+   - height: 12px; Fixed indicator height.
+   - border-radius: 50%; Circular indicators.
+   - border: none; Removes default button border.
+   - background: #ccc; Default gray background.
+   - cursor: pointer; Shows pointer on hover.
+   - transition: background-color 0.3s ease; Smooth color transition.
+*/
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/*
+   This rule styles the active indicator and hover states.
+   - background: #333; Dark background for active/hover state.
+*/
+.indicator.active,
+.indicator:hover {
+    background: #333;
+}
+
+/*
    This rule targets the container for the main image of the artwork.
    - margin-bottom: 2rem; Adds space below the image.
    - text-align: center; Centers the image within the container.
@@ -48,34 +199,4 @@ model-viewer {
 */
 .work-description {
     margin-bottom: 2rem;
-}
-
-/*
-   This rule targets the section for related works.
-   - border-top: 1px solid #bbbbbb; Adds a top border to the section.
-   - padding-top: 2rem; Adds space above the section content.
-*/
-.related-works {
-    border-top: 1px solid #bbbbbb;
-    padding-top: 2rem;
-}
-
-/*
-   This rule targets the grid container for the related works.
-   - display: grid; Creates a grid container.
-   - grid-template-columns: repeat(3, 1fr); Creates a 3-column grid with equal-width columns.
-   - gap: 1rem; Adds space between the grid items.
-*/
-.related-works-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-}
-
-/*
-   This rule targets each individual item in the related works grid.
-*/
-.related-work-item img {
-    width: 100%;
-    height: auto;
 }
