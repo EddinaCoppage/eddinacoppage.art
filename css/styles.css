@@ -53,6 +53,29 @@ main {
   max-width: none;
 }
 
+/* Responsive main content padding for collections pages */
+body:not(.index-page) main {
+  padding: 1rem;
+}
+
+@media (min-width: 769px) {
+  body:not(.index-page) main {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body:not(.index-page) main {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body:not(.index-page) main {
+    padding: 1rem;
+  }
+}
+
 
 /*
    Header and Footer styles

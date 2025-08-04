@@ -7,11 +7,37 @@
    - display: grid; Creates a grid container.
    - grid-template-columns: repeat(4, 1fr); Creates a 4-column grid with equal-width columns.
    - gap: 1.5rem; Adds space between the grid items.
+   - Desktop: center the gallery grid and limit width for better presentation
 */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
+    padding: 1rem; /* Add base padding for mobile */
+}
+
+/* Desktop: center the gallery grid and limit width */
+@media (min-width: 993px) {
+    .gallery-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+}
+
+/* Mobile responsive padding */
+@media (max-width: 768px) {
+    .gallery-grid {
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        padding: 1rem;
+        gap: 0.75rem;
+    }
 }
 
 /*

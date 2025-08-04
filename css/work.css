@@ -10,6 +10,27 @@
 .work-container {
     max-width: 900px;
     margin: 0 auto;
+    padding: 1rem; /* Add base padding for mobile */
+}
+
+/* Desktop responsive padding */
+@media (min-width: 769px) {
+    .work-container {
+        padding: 2rem;
+    }
+}
+
+/* Mobile responsive padding */
+@media (max-width: 768px) {
+    .work-container {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .work-container {
+        padding: 1rem;
+    }
 }
 
 /*

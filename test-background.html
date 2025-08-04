@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Test</title>
+    <style>
+        .test-container {
+            width: 100vw;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        /* Mobile first */
+        .test-gallery-bg {
+            background-image: url('images/featured-2-mobile.jpg');
+        }
+        
+        /* Desktop override */
+        @media (min-width: 769px) {
+            .test-gallery-bg {
+                background-image: url('images/featured-2-desktop.jpg');
+            }
+        }
+        
+        .info {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container test-gallery-bg"></div>
+    <div class="info">
+        <p>Screen width: <span id="width"></span>px</p>
+        <p>Should show:</p>
+        <p>Mobile (< 769px): featured-2-mobile.jpg</p>
+        <p>Desktop (≥ 769px): featured-2-desktop.jpg</p>
+    </div>
+    
+    <script>
+        document.getElementById('width').textContent = window.innerWidth;
+        window.addEventListener('resize', function() {
+            document.getElementById('width').textContent = window.innerWidth;
+        });
+    </script>
+</body>
+</html>

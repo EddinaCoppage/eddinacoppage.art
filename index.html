@@ -6,7 +6,7 @@
 
   <title>Eddina Coppage | Home</title>
   <meta name="description" content="Paintings and fine art by Eddina Coppage, laid out plainly. An interdisciplinary practice shown without distraction.">
-  <meta name="keywords" content="texas painter, texas portrait artist, black woman artist, Corpus Christi painter, Texas student artist, black texan artist, black artist">
+  <meta name="keywords" content="eddina coppage, eddina mae coppage, eddina, coppage, eddina coppage art, eddina art, coppage art, eddina mae coppage art, texas artist, female artist, painter, sculptor, drawer, polymer clay, crafts, texas painter, texas portrait artist, black woman artist, Corpus Christi painter, Texas student artist, black texan artist, black artist">
   <meta name="author" content="Eddina Coppage">
 
   <meta property="og:title" content="Eddina Coppage | Home">
@@ -67,26 +67,26 @@
         </div>
       </div>
 
-      <div class="hero-section">
-        <div class="parallax-bg featured-2 rotating"></div>
+      <div class="hero-section gallery-hero-section">
+        <div class="parallax-bg gallery-bg rotating"></div>
         <div class="hero-content gallery-hero">
           <div class="gallery-showcase-container">
             <h2>GALLERY</h2>
             <p>Explore selected works</p>
             
             <div class="featured-works">
-              <div class="featured-work">
-                <img src="images/featured-1.jpg" alt="Featured artwork 1">
-              </div>
-              <div class="featured-work">
-                <img src="images/featured-crunchyroll.jpg" alt="Crunchyroll - Fine Craft">
-              </div>
-              <div class="featured-work">
-                <img src="images/featured-3.jpg" alt="Featured artwork 3">
-              </div>
+              <a href="collections/2d/Ellionna/index.html" class="featured-work">
+                <img src="collections/2d/Ellionna-thumb.jpg" alt="Ellionna - 2D Work">
+              </a>
+              <a href="collections/fine-craft/crunchyroll/index.html" class="featured-work">
+                <img src="collections/fine-craft/crunchyroll-thumb.jpg" alt="Crunchyroll - Fine Craft">
+              </a>
+              <a href="collections/3d/fine-bunny/index.html" class="featured-work">
+                <img src="collections/3d/fine-bunny-thumb.jpg" alt="Fine Bunny - 3D Work">
+              </a>
             </div>
             
-            <a href="collections/index.html" class="hero-btn">VIEW FULL GALLERY</a>
+            <a href="collections/index.html" class="hero-btn">View Full Gallery</a>
           </div>
         </div>
       </div>
@@ -97,7 +97,7 @@
           <div class="about-bio-container">
             <h2>ABOUT</h2>
             <p class="bio-summary">Eddina Coppage is a multidisciplinary artist whose work explores themes of identity, culture, and personal narrative through painting and mixed media. Her practice bridges traditional techniques with contemporary perspectives, creating vibrant compositions that speak to the complexities of modern life. Based in Texas, she draws inspiration from her surroundings and experiences to create art that resonates with diverse audiences.</p>
-            <a href="bio.html" class="hero-btn">BIO</a>
+            <a href="bio.html" class="hero-btn">Learn More..</a>
           </div>
         </div>
       </div>
@@ -105,16 +105,28 @@
       <div class="hero-section">
         <div class="parallax-bg featured-4 rotating"></div>
         <div class="hero-content">
-          <h2>CV</h2>
-          <p>See exhibitions & awards</p>
-          <a href="cv.html" class="hero-btn">CV</a>
+          <div class="cv-showcase-container">
+            <h2>CURRICULUM VITAE</h2>
+            <p>Exhibitions, Awards & Professional Experience</p>
+            
+            <div class="cv-preview">
+              <a href="cv.html" class="cv-preview-link">
+                <div class="cv-preview-image">
+                  <img src="images/cv.jpg" alt="Curriculum Vitae Preview" />
+                </div>
+              </a>
+            </div>
+            
+            <a href="cv.html" class="hero-btn">View Full Cv</a>
+          </div>
         </div>
       </div>
 
       <div class="hero-section" id="contact">
         <div class="parallax-bg featured-5 rotating"></div>
         <div class="hero-content contact-hero">
-          <div class="contact-form-container">
+          <!-- Desktop Contact Form -->
+          <div class="contact-form-container desktop-contact">
             <h2>CONTACT</h2>
             <p>Get in touch for commissions, inquiries, or collaborations</p>
             <form action="https://formsubmit.co/d6d85bf68aa9465f91629e59d01e5c42" method="POST">
@@ -127,20 +139,54 @@
               <input type="text" name="_honey" style="display:none">
               
               <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
+                <label for="name-desktop">Name</label>
+                <input type="text" id="name-desktop" name="name" required>
               </div>
               <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <label for="email-desktop">Email</label>
+                <input type="email" id="email-desktop" name="email" required>
               </div>
               <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject" required>
+                <label for="subject-desktop">Subject</label>
+                <input type="text" id="subject-desktop" name="subject" required>
               </div>
               <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
+                <label for="message-desktop">Message</label>
+                <textarea id="message-desktop" name="message" rows="4" required></textarea>
+              </div>
+              
+              <button type="submit">Send Message</button>
+            </form>
+          </div>
+          
+          <!-- Mobile Contact Form -->
+          <div class="contact-form-container mobile-contact">
+            <h2>CONTACT</h2>
+            <p>Get in touch for commissions, inquiries, or collaborations</p>
+            <form action="https://formsubmit.co/d6d85bf68aa9465f91629e59d01e5c42" method="POST">
+              <!-- FormSubmit.co hidden inputs -->
+              <input type="hidden" name="_subject" value="New contact from eddinacoppage.art">
+              <input type="hidden" name="_captcha" value="true">
+              <input type="hidden" name="_template" value="table">
+              
+              <!-- Honeypot field (hidden from users) -->
+              <input type="text" name="_honey" style="display:none">
+              
+              <div class="form-group">
+                <label for="name-mobile">Name</label>
+                <input type="text" id="name-mobile" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email-mobile">Email</label>
+                <input type="email" id="email-mobile" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="subject-mobile">Subject</label>
+                <input type="text" id="subject-mobile" name="subject" required>
+              </div>
+              <div class="form-group">
+                <label for="message-mobile">Message</label>
+                <textarea id="message-mobile" name="message" rows="4" required></textarea>
               </div>
               
               <button type="submit">Send Message</button>

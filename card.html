@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Eddina Coppage | Contact Card</title>
+  <meta name="description" content="Digital contact card for Eddina Coppage - Texas Artist & Painter">
+  <meta name="keywords" content="eddina coppage, contact, digital business card, texas artist, painter">
+  <meta name="author" content="Eddina Coppage">
+
+  <meta property="og:title" content="Eddina Coppage | Contact Card">
+  <meta property="og:description" content="Digital contact card for Eddina Coppage - Texas Artist & Painter">
+  <meta property="og:image" content="images/Eddina_Headshot.jpg">
+  <meta property="og:url" content="https://eddinacoppage.art/card">
+  <meta property="og:type" content="profile">
+
+  <link rel="icon" href="icons/favicon.ico" sizes="any">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-image: url('images/link-mobile.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #333;
+    }
+    
+    /* Desktop background image */
+    @media (min-width: 769px) {
+      body {
+        background-image: url('images/link-desktop.jpg');
+      }
+    }
+    
+    .card-container {
+      max-width: 400px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    
+    .card-header {
+      background: rgba(0, 0, 0, 0.7) !important;
+      padding: 40px 30px 30px;
+      text-align: center;
+      position: relative;
+      border-radius: 24px 24px 0 0;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      isolation: isolate;
+    }
+    
+    .profile-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+    
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .name {
+      color: white;
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    
+    .title {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+    
+    .location {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+      font-weight: 400;
+    }
+    
+    .card-body {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-top: none;
+      border-radius: 0 0 24px 24px;
+      padding: 30px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      margin-top: 0;
+      z-index: 2;
+    }
+    
+    .bio {
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 30px;
+    }
+    
+    .contact-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 20px;
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      position: relative;
+      text-align: center;
+    }
+    
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .contact-btn .label {
+      font-size: 15px;
+      width: 100%;
+      text-align: center;
+      color: #000;
+    }
+    
+    .website-btn {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    
+    .website-btn:hover {
+      background: rgba(0, 0, 0, 0.15);
+    }
+    
+    .email-btn {
+      background: rgba(0, 0, 0, 0.15);
+    }
+    
+    .email-btn:hover {
+      background: rgba(0, 0, 0, 0.2);
+    }
+    
+    .instagram-btn {
+      background: rgba(0, 0, 0, 0.2);
+    }
+    
+    .instagram-btn:hover {
+      background: rgba(0, 0, 0, 0.25);
+    }
+    
+    .contact-btn:nth-child(4) {
+      background: rgba(0, 0, 0, 0.25);
+    }
+    
+    .contact-btn:nth-child(4):hover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+    
+    .save-contact {
+      margin-top: 20px;
+      text-align: center;
+    }
+    
+    .save-btn {
+      background: #b8d0d4;
+      color: #333;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .save-btn:hover {
+      background: #acc4ca;
+      transform: translateY(-1px);
+    }
+    
+    @media (max-width: 480px) {
+      .card-container {
+        margin: 10px;
+        border-radius: 20px;
+      }
+      
+      .card-header {
+        padding: 30px 20px 20px;
+      }
+      
+      .profile-image {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .name {
+        font-size: 24px;
+      }
+      
+      .card-body {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card-container">
+    <div class="card-header">
+      <div class="profile-image">
+        <img src="images/Eddina_Headshot.jpg" alt="Eddina Coppage" />
+      </div>
+      <h1 class="name">Eddina Coppage</h1>
+      <p class="title">Artist</p>
+      <p class="location">Texas, USA</p>
+    </div>
+    
+    <div class="card-body">
+      <p class="bio">
+        Multidisciplinary artist exploring themes of identity and culture through painting and mixed media. Creating vibrant compositions that speak to the complexities of modern life.
+      </p>
+      
+      <div class="contact-buttons">
+        <a href="https://eddinacoppage.art" class="contact-btn website-btn">
+          <span class="label">Visit Portfolio</span>
+        </a>
+        
+        <a href="mailto:contact@eddinacoppage.art" class="contact-btn email-btn">
+          <span class="label">Email</span>
+        </a>
+        
+        <a href="https://instagram.com/eddinacoppage.art" class="contact-btn instagram-btn">
+          <span class="label">Instagram</span>
+        </a>
+        
+        <a href="collections/index.html" class="contact-btn">
+          <span class="label">View Gallery</span>
+        </a>
+      </div>
+      
+      <div class="save-contact">
+        <button class="save-btn" onclick="saveContact()">
+          Save Contact
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function saveContact() {
+      // Create vCard data
+      const vCard = `BEGIN:VCARD
+VERSION:3.0
+FN:Eddina Coppage
+ORG:Independent Artist
+TITLE:Artist & Painter
+EMAIL:contact@eddinacoppage.art
+TEL:+1234567890
+URL:https://eddinacoppage.art
+NOTE:Multidisciplinary artist exploring themes of identity and culture through painting and mixed media.
+END:VCARD`;
+
+      // Create blob and download
+      const blob = new Blob([vCard], { type: 'text/vcard' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'eddina-coppage-contact.vcf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    }
+    
+    // Add smooth animations on load
+    document.addEventListener('DOMContentLoaded', function() {
+      const card = document.querySelector('.card-container');
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      
+      setTimeout(() => {
+        card.style.transition = 'all 0.6s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, 100);
+    });
+  </script>
+</body>
+</html>

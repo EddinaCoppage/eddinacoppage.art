@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eddina Coppage | Twist</title>
+    <meta name="description" content="Details about the artwork 'Twist' by Eddina Coppage.">
+    <meta name="keywords" content="eddina coppage, eddina mae coppage, eddina, coppage, eddina coppage art, eddina art, coppage art, eddina mae coppage art, texas artist, female artist, painter, sculptor, drawer, polymer clay, crafts, twist, Eddina Coppage, 3d art">
+    <meta name="author" content="Eddina Coppage">
+
+    <meta property="og:title" content="Eddina Coppage | Twist">
+    <meta property="og:description" content="Details about the artwork 'Twist' by Eddina Coppage.">
+    <meta property="og:image" content="../../../images/social-sharing.jpg"> <!-- Placeholder -->
+    <meta property="og:url" content="https://eddinacoppage.art/collections/3d/twist/index.html">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Eddina Coppage | Twist">
+    <meta name="twitter:description" content="Details about the artwork 'Twist' by Eddina Coppage.">
+    <meta name="twitter:image" content="../../../images/social-sharing.jpg"> <!-- Placeholder -->
+
+    <link rel="icon" href="../../../icons/favicon.ico" sizes="any">
+    <link rel="icon" href="../../../icons/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../../icons/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="stylesheet" href="../../../css/work.css">
+
+    <!-- model-viewer component -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+
+    <script src="../../../scripts/main.js" defer></script>
+    <script>
+        // Backup carousel script for twist page
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.querySelector('.carousel-track');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.querySelector('.carousel-nav.prev');
+            const nextBtn = document.querySelector('.carousel-nav.next');
+
+            if (carousel && slides.length > 0) {
+                let currentSlide = 0;
+
+                function updateCarousel() {
+                    carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    
+                    slides.forEach((slide, index) => {
+                        slide.classList.toggle('active', index === currentSlide);
+                    });
+                    
+                    indicators.forEach((indicator, index) => {
+                        indicator.classList.toggle('active', index === currentSlide);
+                    });
+                }
+
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    updateCarousel();
+                }
+
+                function prevSlide() {
+                    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                    updateCarousel();
+                }
+
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', nextSlide);
+                }
+
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', prevSlide);
+                }
+
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        currentSlide = index;
+                        updateCarousel();
+                    });
+                });
+
+                // Initialize carousel
+                updateCarousel();
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../../../index.html" class="site-title">EC</a>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../../index.html">HOME</a></li>
+                <li><a href="../../index.html">GALLERY</a></li>
+                <li><a href="../../../bio.html">BIO</a></li>
+                <li><a href="../../../cv.html">CV</a></li>
+                <li><a href="../../../index.html#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="work-container">
+        <div class="work-carousel">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-slide active">
+                        <img src="images/twist-1.jpg" alt="Twist - Main View">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/twist-2.jpg" alt="Twist - View 2">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/twist-3.jpg" alt="Twist - View 3">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/twist-4.jpg" alt="Twist - View 4">
+                    </div>
+                </div>
+                <button class="carousel-nav prev" aria-label="Previous image">&lt;</button>
+                <button class="carousel-nav next" aria-label="Next image">&gt;</button>
+            </div>
+            <div class="carousel-indicators">
+                <button class="indicator active" data-slide="0"></button>
+                <button class="indicator" data-slide="1"></button>
+                <button class="indicator" data-slide="2"></button>
+                <button class="indicator" data-slide="3"></button>
+            </div>
+        </div>
+
+        <!-- Example of a 3D model viewer -->
+        <!-- <model-viewer src="models/twist.glb" alt="A 3D model of the twist" auto-rotate camera-controls></model-viewer> -->
+
+        <div class="work-details">
+            <h2>Twist</h2>
+            <p><strong>Medium:</strong> Mixed Media</p>
+            <p><strong>Dimensions:</strong> 10" x 8" x 6"</p>
+            <p><strong>Year:</strong> 2024</p>
+        </div>
+
+        <div class="work-description">
+            <p>Twist explores the dynamic interplay between movement and form through three-dimensional sculptural expression. This piece captures a sense of fluidity and energy, demonstrating how static materials can convey motion and transformation. The work invites contemplation on the nature of change and the beauty found in transitional moments.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Eddina Coppage. All rights reserved.</p>
+    </footer>
+</body>
+</html>

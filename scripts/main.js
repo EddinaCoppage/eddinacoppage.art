@@ -80,6 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Move the carousel track
             carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
             
+            // Update slides active class
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            
             // Update indicators
             indicators.forEach((indicator, index) => {
                 indicator.classList.toggle('active', index === currentSlide);
@@ -117,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (carousel.closest('.work-container')) {
+            if (document.querySelector('.work-container .carousel-track')) {
                 if (e.key === 'ArrowLeft') {
                     prevSlide();
                 } else if (e.key === 'ArrowRight') {
