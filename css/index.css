@@ -1039,3 +1039,102 @@ body, p, span, div, input, textarea, button, label, li {
   font-size: 0.8rem;
   margin-top: 0.5rem;
 }
+
+/* CAPTCHA styling for contact forms */
+.captcha-group {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+/* Checkbox CAPTCHA styling */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+}
+
+.checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  height: 20px;
+  width: 20px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 3px;
+  margin-right: 0.7rem;
+  position: relative;
+  transition: all 0.2s ease;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.checkbox-label:hover input ~ .checkmark {
+  background-color: rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-label input:checked ~ .checkmark {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #4CAF50;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-label input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Mobile specific CAPTCHA adjustments */
+@media (max-width: 768px) {
+  .captcha-group {
+    margin-bottom: 0.5rem;
+  }
+  
+  .checkbox-label {
+    font-size: 0.8rem;
+  }
+  
+  .checkmark {
+    height: 18px;
+    width: 18px;
+    margin-right: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    border-radius: 3px;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  
+  .checkbox-label .checkmark:after {
+    left: 5px;
+    top: 1px;
+    width: 4px;
+    height: 9px;
+    border: solid #4CAF50;
+    border-width: 0 2px 2px 0;
+  }
+}

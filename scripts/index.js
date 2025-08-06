@@ -410,4 +410,34 @@ document.addEventListener("DOMContentLoaded", () => {
     element.style.transform = 'scale(1.05)';
     element.style.transformOrigin = 'center center';
   });
+
+  // Checkbox CAPTCHA validation
+  function validateCaptcha(formType) {
+    const checkbox = document.getElementById(`captcha-${formType}`);
+    return checkbox && checkbox.checked;
+  }
+
+  // Add form submission handlers
+  const desktopForm = document.querySelector('.desktop-contact form');
+  const mobileForm = document.querySelector('.mobile-contact form');
+
+  if (desktopForm) {
+    desktopForm.addEventListener('submit', function(e) {
+      if (!validateCaptcha('desktop')) {
+        e.preventDefault();
+        alert('Please confirm that you are not a robot by checking the checkbox.');
+        return false;
+      }
+    });
+  }
+
+  if (mobileForm) {
+    mobileForm.addEventListener('submit', function(e) {
+      if (!validateCaptcha('mobile')) {
+        e.preventDefault();
+        alert('Please confirm that you are not a robot by checking the checkbox.');
+        return false;
+      }
+    });
+  }
 });
