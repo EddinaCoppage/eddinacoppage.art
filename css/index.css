@@ -854,6 +854,7 @@ body, p, span, div, input, textarea, button, label, li {
   font-weight: 700;
   color: #ffffff;
   font-size: 0.85rem;
+  transition: color 0.3s ease;
 }
 
 .contact-form-container .form-group input,
@@ -869,6 +870,19 @@ body, p, span, div, input, textarea, button, label, li {
   color: #333333;
   backdrop-filter: blur(5px);
   box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Error state for form fields */
+.contact-form-container .form-group.error label {
+  color: #ff4444;
+}
+
+.contact-form-container .form-group.error input,
+.contact-form-container .form-group.error textarea {
+  border: 2px solid #ff4444;
+  background: rgba(255, 68, 68, 0.1);
+  animation: shake 0.5s ease-in-out;
 }
 
 .contact-form-container .form-group input::placeholder,
@@ -879,6 +893,13 @@ body, p, span, div, input, textarea, button, label, li {
 .contact-form-container .form-group input:focus,
 .contact-form-container .form-group textarea:focus {
   outline: none;
+  border-color: rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* Remove error state when field is focused and valid */
+.contact-form-container .form-group.error input:focus,
+.contact-form-container .form-group.error textarea:focus {
   border-color: rgba(0, 0, 0, 0.4);
   background: rgba(255, 255, 255, 0.95);
 }
@@ -899,6 +920,9 @@ body, p, span, div, input, textarea, button, label, li {
   font-family: 'Cinzel', serif;
   font-weight: 700;
   cursor: pointer;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
 }
 
 .contact-form-container button[type="submit"]:hover,
@@ -906,6 +930,7 @@ body, p, span, div, input, textarea, button, label, li {
   background: #fff;
   color: #222;
   border-color: #fff;
+  transform: none; /* Prevent any transform that might interfere */
 }
 
 /* Hide the mobile-specific contact form since we're using unified styling */
@@ -1045,6 +1070,26 @@ body, p, span, div, input, textarea, button, label, li {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding-top: 0.8rem;
   margin-top: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+/* Error state for CAPTCHA - simplified selectors */
+.captcha-group.error,
+.form-group.captcha-group.error,
+.contact-form-container .form-group.captcha-group.error {
+  border: 3px solid #ff4444 !important;
+  border-radius: 8px !important;
+  padding: 0.8rem !important;
+  background: rgba(255, 68, 68, 0.3) !important;
+  box-shadow: 0 0 10px rgba(255, 68, 68, 0.5) !important;
+  animation: shake 0.5s ease-in-out !important;
+  margin-top: 0.5rem !important;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+  20%, 40%, 60%, 80% { transform: translateX(8px); }
 }
 
 /* Checkbox CAPTCHA styling */
@@ -1057,6 +1102,21 @@ body, p, span, div, input, textarea, button, label, li {
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
   position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Error state for checkbox label - simplified selectors */
+.captcha-group.error .checkbox-label {
+  color: #ff6666 !important;
+  font-weight: 700 !important;
+}
+
+.captcha-group.error .checkmark,
+.captcha-group.error .checkbox-label:hover .checkmark,
+.captcha-group.error .checkbox-label:focus .checkmark {
+  border-color: #ff4444 !important;
+  background-color: rgba(255, 68, 68, 0.3) !important;
+  box-shadow: 0 0 5px rgba(255, 68, 68, 0.5) !important;
 }
 
 .checkbox-label input[type="checkbox"] {
@@ -1084,6 +1144,15 @@ body, p, span, div, input, textarea, button, label, li {
   background-color: rgba(255, 255, 255, 1);
   border-color: rgba(255, 255, 255, 1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Error state overrides hover - must come after hover */
+.captcha-group.error .checkbox-label:hover input ~ .checkmark,
+.captcha-group.error .checkbox-label:focus input ~ .checkmark,
+.captcha-group.error .checkbox-label:active input ~ .checkmark {
+  background-color: rgba(255, 68, 68, 0.3) !important;
+  border-color: #ff4444 !important;
+  box-shadow: 0 0 5px rgba(255, 68, 68, 0.5) !important;
 }
 
 .checkbox-label input:checked ~ .checkmark {

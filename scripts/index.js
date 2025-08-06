@@ -417,27 +417,192 @@ document.addEventListener("DOMContentLoaded", () => {
     return checkbox && checkbox.checked;
   }
 
+  // Validate individual form field
+  function validateField(field) {
+    const value = field.value.trim();
+    const isValid = value !== '';
+    
+    // For email field, also check format
+    if (field.type === 'email' && value !== '') {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(value);
+    }
+    
+    return isValid;
+  }
+
+  // Add error styling to form field
+  function addFieldError(field) {
+    const formGroup = field.closest('.form-group');
+    if (formGroup) {
+      formGroup.classList.add('error');
+      // Force reflow to ensure styling is applied immediately
+      formGroup.offsetHeight;
+    }
+  }
+
+  // Remove error styling from form field
+  function removeFieldError(field) {
+    const formGroup = field.closest('.form-group');
+    if (formGroup) {
+      formGroup.classList.remove('error');
+    }
+  }
+
+  // Add error styling to CAPTCHA
+  function addCaptchaError(formType) {
+    const checkbox = document.getElementById(`captcha-${formType}`);
+    if (checkbox) {
+      // Try multiple ways to find the captcha group
+      let captchaGroup = checkbox.closest('.captcha-group');
+      if (!captchaGroup) {
+        captchaGroup = checkbox.parentElement.closest('.captcha-group');
+      }
+      if (captchaGroup) {
+        captchaGroup.classList.add('error');
+        // Force reflow to ensure styling is applied immediately
+        captchaGroup.offsetHeight;
+      }
+    }
+  }
+
+  // Remove error styling from CAPTCHA
+  function removeCaptchaError(formType) {
+    const checkbox = document.getElementById(`captcha-${formType}`);
+    if (checkbox) {
+      // Try multiple ways to find the captcha group
+      let captchaGroup = checkbox.closest('.captcha-group');
+      if (!captchaGroup) {
+        captchaGroup = checkbox.parentElement.closest('.captcha-group');
+      }
+      if (captchaGroup) {
+        captchaGroup.classList.remove('error');
+      }
+    }
+  }
+
+  // Validate entire form
+  function validateForm(form, formType) {
+    let isValid = true;
+    const requiredFields = form.querySelectorAll('input[required], textarea[required]');
+    const errorFields = [];
+
+    // First, remove all existing errors
+    requiredFields.forEach(field => {
+      if (field.id !== `captcha-${formType}`) {
+        removeFieldError(field);
+      }
+    });
+    removeCaptchaError(formType);
+
+    // Then check all required fields except CAPTCHA
+    requiredFields.forEach(field => {
+      if (field.id !== `captcha-${formType}`) {
+        if (!validateField(field)) {
+          addFieldError(field);
+          errorFields.push(field.previousElementSibling.textContent);
+          isValid = false;
+        }
+      }
+    });
+
+    // Check CAPTCHA
+    if (!validateCaptcha(formType)) {
+      addCaptchaError(formType);
+      errorFields.push('CAPTCHA verification');
+      isValid = false;
+    }
+
+    return { isValid, errorFields };
+  }
+
   // Add form submission handlers
   const desktopForm = document.querySelector('.desktop-contact form');
   const mobileForm = document.querySelector('.mobile-contact form');
 
   if (desktopForm) {
     desktopForm.addEventListener('submit', function(e) {
-      if (!validateCaptcha('desktop')) {
-        e.preventDefault();
-        alert('Please confirm that you are not a robot by checking the checkbox.');
+      e.preventDefault(); // Always prevent default first
+      
+      const validation = validateForm(this, 'desktop');
+      
+      if (!validation.isValid) {
+        const missingFields = validation.errorFields.join(', ');
+        // Small delay to ensure error styling is visible before alert
+        setTimeout(() => {
+          alert(`Please fill in the following required fields: ${missingFields}`);
+        }, 100);
         return false;
+      } else {
+        // If validation passes, submit the form
+        this.submit();
       }
     });
+
+    // Add input listeners to remove errors when fields are filled
+    const desktopFields = desktopForm.querySelectorAll('input[required], textarea[required]');
+    desktopFields.forEach(field => {
+      if (field.id !== 'captcha-desktop') {
+        field.addEventListener('input', function() {
+          if (validateField(this)) {
+            removeFieldError(this);
+          }
+        });
+      }
+    });
+
+    // Add change listener to remove error when checkbox is checked
+    const desktopCheckbox = document.getElementById('captcha-desktop');
+    if (desktopCheckbox) {
+      desktopCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+          removeCaptchaError('desktop');
+        }
+      });
+    }
+  } else {
+    // Desktop form not found - this should not happen in production
   }
 
   if (mobileForm) {
     mobileForm.addEventListener('submit', function(e) {
-      if (!validateCaptcha('mobile')) {
-        e.preventDefault();
-        alert('Please confirm that you are not a robot by checking the checkbox.');
+      e.preventDefault(); // Always prevent default first
+      
+      const validation = validateForm(this, 'mobile');
+      
+      if (!validation.isValid) {
+        const missingFields = validation.errorFields.join(', ');
+        // Small delay to ensure error styling is visible before alert
+        setTimeout(() => {
+          alert(`Please fill in the following required fields: ${missingFields}`);
+        }, 100);
         return false;
+      } else {
+        // If validation passes, submit the form
+        this.submit();
       }
     });
+
+    // Add input listeners to remove errors when fields are filled
+    const mobileFields = mobileForm.querySelectorAll('input[required], textarea[required]');
+    mobileFields.forEach(field => {
+      if (field.id !== 'captcha-mobile') {
+        field.addEventListener('input', function() {
+          if (validateField(this)) {
+            removeFieldError(this);
+          }
+        });
+      }
+    });
+
+    // Add change listener to remove error when checkbox is checked
+    const mobileCheckbox = document.getElementById('captcha-mobile');
+    if (mobileCheckbox) {
+      mobileCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+          removeCaptchaError('mobile');
+        }
+      });
+    }
   }
 });
