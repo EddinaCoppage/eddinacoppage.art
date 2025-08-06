@@ -1,0 +1,6 @@
+Contact: mailto:hello@eddinacoppage.art
+Expires: 2026-12-31T23:59:59.000Z
+Encryption: https://eddinacoppage.art/pgp-key.txt
+Preferred-Languages: en
+Canonical: https://eddinacoppage.art/.well-known/security.txt
+Policy: https://eddinacoppage.art/security-policy.html

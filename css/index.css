@@ -669,21 +669,21 @@ body, p, span, div, input, textarea, button, label, li {
     border-radius: 15px;
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    padding: 2rem 1.5rem;
+    padding: 1.2rem 1rem;
     text-align: center;
-    max-width: 350px;
+    max-width: 360px;
     margin: 0 auto;
   }
   
   .about-bio-container h2 {
     color: #ffffff;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+    font-size: 1.2rem;
   }
   
   .about-bio-container p {
     color: #ffffff;
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
   }
   
   /* CV showcase mobile - CARD STYLE LIKE DESKTOP */
@@ -726,21 +726,21 @@ body, p, span, div, input, textarea, button, label, li {
     border-radius: 15px;
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    padding: 2rem 1.5rem;
+    padding: 1.2rem 0.8rem;
     text-align: center;
-    max-width: 350px;
+    max-width: 340px;
     margin: 0 auto;
   }
   
   .contact-form-container h2 {
     color: #ffffff;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+    font-size: 1.2rem;
   }
   
   .contact-form-container p {
     color: #ffffff;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.8rem;
   }
   
   /* Hero buttons mobile styling - MATCH DESKTOP STYLE */
@@ -799,18 +799,32 @@ body, p, span, div, input, textarea, button, label, li {
   }
   
   .gallery-showcase-container,
-  .about-bio-container,
-  .cv-showcase-container,
+  .cv-showcase-container {
+    max-width: 300px;
+    padding: 1.3rem 1rem;
+  }
+  
+  .about-bio-container {
+    max-width: 350px;
+    padding: 1rem 0.8rem;
+  }
+  
   .contact-form-container {
-    max-width: 320px;
-    padding: 1.5rem 1rem;
+    max-width: 380px;
+    padding: 1.2rem 1rem;
   }
   
   .gallery-showcase-container h2,
-  .about-bio-container h2,
-  .cv-showcase-container h2,
-  .contact-form-container h2 {
+  .cv-showcase-container h2 {
     font-size: 1.4rem;
+  }
+  
+  .about-bio-container h2 {
+    font-size: 1.1rem;
+  }
+  
+  .contact-form-container h2 {
+    font-size: 1.2rem;
   }
   
   .bio-summary {
@@ -829,28 +843,28 @@ body, p, span, div, input, textarea, button, label, li {
 
 /* Contact form styling within the card for all screen sizes */
 .contact-form-container .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   text-align: left;
 }
 
 .contact-form-container .form-group label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   font-family: 'Cinzel', serif;
   font-weight: 700;
   color: #ffffff;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .contact-form-container .form-group input,
 .contact-form-container .form-group textarea {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.6rem;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   font-family: 'Nunito', sans-serif;
   font-weight: 200;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   background: rgba(255, 255, 255, 0.9);
   color: #333333;
   backdrop-filter: blur(5px);
@@ -871,14 +885,14 @@ body, p, span, div, input, textarea, button, label, li {
 
 .contact-form-container button[type="submit"] {
   display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
+  margin-top: 0.8rem;
+  padding: 0.6rem 1.2rem;
   background: rgba(255,255,255,0.13);
   border: 1.5px solid #fff;
   color: #fff;
   border-radius: 30px;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.9rem;
   letter-spacing: 0.03em;
   transition: background 0.2s, color 0.2s, border 0.2s;
   backdrop-filter: blur(2px);
@@ -1007,4 +1021,21 @@ body, p, span, div, input, textarea, button, label, li {
 .contact-form-container.animate {
   transform: translateY(0);
   opacity: 1;
+}
+
+/* Mobile contact form adjustments for more compact form */
+.contact-form-container .form-group {
+  margin-bottom: 0.6rem;
+}
+
+.contact-form-container .form-group input,
+.contact-form-container .form-group textarea {
+  padding: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.contact-form-container button[type="submit"] {
+  padding: 0.6rem 1.5rem;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
 }
