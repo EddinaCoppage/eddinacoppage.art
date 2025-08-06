@@ -353,7 +353,7 @@ body, p, span, div, input, textarea, button, label, li {
   .hero-section:first-child .hero-content h1::before {
     content: '';
     position: absolute;
-    left: -60px;
+    left: -20px;
     top: 50%;
     transform: translateY(-50%);
     width: 120px;
@@ -374,19 +374,111 @@ body, p, span, div, input, textarea, button, label, li {
     width: 100%;
   }
   
+  .hero-section:first-child .hero-content h1 .name-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+  }
+  
   .hero-section:first-child .hero-content h1 .middle-space {
     display: none;
   }
   
   .hero-section:first-child .hero-content h1 .flower-image {
-    display: block !important;
-    width: 24px !important;
-    height: 24px !important;
-    margin: 0.5rem 0 0 auto !important;
-    opacity: 1 !important;
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0.5rem 0 0 auto;
+    opacity: 0;
     flex-shrink: 0;
-    transform: translateY(0) !important;
-    animation: none !important;
+    transform: translateY(20px);
+  }
+  
+  /* Desktop card containers - positioned in different areas */
+  .gallery-showcase-container,
+  .about-bio-container,
+  .cv-showcase-container,
+  .contact-form-container {
+    background: rgba(97, 126, 153, 0.9);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 2.5rem;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+  
+  .gallery-showcase-container h2,
+  .about-bio-container h2,
+  .cv-showcase-container h2,
+  .contact-form-container h2 {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  .gallery-showcase-container p,
+  .about-bio-container p,
+  .cv-showcase-container p,
+  .contact-form-container p {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .gallery-showcase-container {
+    text-align: center;
+  }
+  
+  .featured-works {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin: 2rem 0;
+    justify-content: center;
+  }
+  
+  .featured-work {
+    width: 120px;
+    height: auto;
+  }
+  
+  .featured-work img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .about-bio-container {
+    text-align: center;
+  }
+  
+  .bio-summary {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .cv-showcase-container {
+    text-align: center;
+  }
+  
+  .cv-preview {
+    margin: 2rem 0;
+  }
+  
+  .cv-preview-image img {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .contact-form-container {
+    text-align: center;
   }
 }
 
@@ -403,303 +495,98 @@ body, p, span, div, input, textarea, button, label, li {
   }
 
   .hero-section:first-child .hero-content h1::before {
-    left: -55px;
+    left: -15px;
     width: 110px;
     height: 110px;
   }
   
   .hero-section:first-child .hero-content h1 .flower-image {
-    width: 22px !important;
-    height: 22px !important;
-  }
-}
-
-/* Active section slides up to cover */
-.hero-section.active {
-  transform: translateY(0);
-}
-
-/* Set z-index based on section order - later sections appear on top */
-.hero-section:nth-child(1) { z-index: 1; }
-.hero-section:nth-child(2) { z-index: 2; }
-.hero-section:nth-child(3) { z-index: 3; }
-.hero-section:nth-child(4) { z-index: 4; }
-.hero-section:nth-child(5) { z-index: 5; }
-
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed; /* CSS-only parallax */
-
-  /* Smooth animation support */
-  will-change: transform;
-}
-
-/* Specific class added by JS to activate rotation animation */
-.parallax-bg.rotating {
-  /* Ensures GPU handles the animation smoothly */
-  transition: transform 0.1s ease-out;
-  transform-origin: center center;
-  scale: 1.0; /* No scaling to show full image */
-}
-
-/* Mobile background images */
-.featured-1 { background-image: url('../images/featured-1-mobile.jpg'); }
-.featured-2 { background-image: url('../images/featured-2-mobile.jpg'); }
-.featured-3 { background-image: url('../images/featured-3-mobile.jpg'); }
-.featured-4 { background-image: url('../images/featured-4-mobile.jpg'); }
-.featured-5 { background-image: url('../images/featured-5-mobile.jpg'); }
-
-/* Gallery hero specific mobile background */
-.gallery-bg { background-image: url('../images/featured-2-mobile.jpg'); }
-
-/* Desktop background images */
-@media (min-width: 769px) {
-  .featured-1 { background-image: url('../images/featured-1-desktop.jpg'); }
-  .featured-2 { background-image: url('../images/featured-2-desktop.jpg'); }
-  .featured-3 { background-image: url('../images/featured-3-desktop.jpg'); }
-  .featured-4 { background-image: url('../images/featured-4-desktop.jpg'); }
-  .featured-5 { background-image: url('../images/featured-5-desktop.jpg'); }
-  
-  /* Gallery hero specific desktop background */
-  .gallery-bg { background-image: url('../images/featured-2-desktop.jpg'); }
-}
-
-/* HERO BUTTON STYLE */
-.hero-btn {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.7em 2em;
-  background: rgba(255,255,255,0.13);
-  border: 1.5px solid #fff;
-  color: #fff;
-  border-radius: 30px;
-  text-decoration: none;
-  font-size: 1.1rem;
-  letter-spacing: 0.03em;
-  transition: background 0.2s, color 0.2s, border 0.2s;
-  backdrop-filter: blur(2px);
-}
-.hero-btn:hover,
-.hero-btn:focus {
-  background: #fff;
-  color: #222;
-  border-color: #fff;
-}
-
-/* HERO CONTENT (centered, fade-in) */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  padding: 2rem;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInHero 1.2s ease 0.2s forwards;
-}
-.hero-content h1, .hero-content h2 {
-  margin: 0 0 0.5em 0;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.18);
-}
-.hero-content p {
-  margin: 0 0 1em 0;
-  font-size: 1.15rem;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.13);
-}
-
-@keyframes fadeInHero {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* STACKING SLIDE ANIMATIONS FOR CONTENT (faster, simultaneous) */
-@keyframes slideUpFromBottom {
-  from {
-    transform: translateY(100%);
+    width: 22px;
+    height: 22px;
     opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Left-to-right reveal animation for About/Contact containers */
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Letter animation - slide up individually */
-@keyframes letterSlideUp {
-  from {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Flower animation - fade in after the last letter */
-@keyframes fadeInFlower {
-  from {
     transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
   }
 }
 
-/* Paused animation classes for scroll control */
-.hero-section:first-child .hero-content h1.paused {
-  animation-play-state: paused;
-}
-
-.hero-section:first-child .hero-content h1 .letter.paused {
-  animation-play-state: paused;
-}
-
-.hero-section:first-child .hero-content h1 .flower-image.paused {
-  animation-play-state: paused;
-}
-
-@keyframes slideUpFromBottomTitle {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
+/* Mobile-specific hero section optimizations - MATCH DESKTOP LAYOUT */
+@media (max-width: 768px) {
+  /* Disable parallax on mobile for better performance */
+  .parallax-bg {
+    background-attachment: scroll !important;
+    background-size: cover;
+    background-position: center center;
   }
-  to {
-    transform: translateY(0);
-    opacity: 1;
+  
+  /* Optimize hero container for mobile */
+  .hero-container {
+    width: 100vw;
+    height: 500vh;
   }
-}
-
-/* HERO OVERLAY - Remove all overlays */
-.hero-section::before {
-  display: none;
-}
-
-/* HERO SECTION - Remove duplicate definition */
-
-/* PARALLAX BG */
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  will-change: transform;
-}
-
-/* PARALLAX ROTATION (optional, can be removed for static) */
-.parallax-bg.rotating {
-  transition: transform 0.1s ease-out;
-  transform-origin: center center;
-  scale: 1.0;
-}
-
-/* PARALLAX ANIMATIONS FOR CONTENT */
-@keyframes scrollInFromBottom {
-  from {
-    transform: translateY(100px);
+  
+  .hero-section {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
   }
-  to {
-    transform: translateY(0);
+  
+  /* Optimize hero content for mobile */
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1rem;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+    color: #fff;
   }
-}
-
-@keyframes scrollInFromBottomTitle {
-  from {
-    transform: translateY(80px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-/* First hero title - no animation on h1, only on letters, positioned at bottom */
-.hero-section:first-child .hero-content {
-  justify-content: flex-end;
-  padding-bottom: 4rem;
-  opacity: 1;
-  transform: translateY(0);
-  animation: fadeInHero 1.2s ease 0.2s forwards;
-}
-
-/* Desktop: positioned in left area with proper spacing */
-@media (min-width: 769px) {
+  
+  /* Mobile-specific title styling - SMALLER VERSION OF DESKTOP CARD */
   .hero-section:first-child .hero-content {
     justify-content: flex-start;
-    align-items: flex-start;
-    padding: 8rem 0 2rem 3rem;
+    align-items: center;
+    padding: 95% 1rem 1rem 1rem;
   }
   
   .hero-section:first-child .hero-content h1 {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    width: 240px;
-    height: 120px;
-    font-size: 1.1rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 220px;
+    height: 90px;
+    font-size: 0.85rem;
     letter-spacing: 0.08em;
     font-weight: 500;
     font-family: 'Cinzel', serif;
     color: #ffffff;
     text-shadow: none;
-    padding: 1rem;
+    padding: 0.8rem 1rem;
     position: relative;
-    text-align: right;
     background: rgba(97, 126, 153, 0.9);
     border-radius: 15px;
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     margin: 0;
-    line-height: 1;
-    transform: translateX(-50px);
-    opacity: 0;
-    animation: slideInFromLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
+    line-height: 1.1;
+    transform: translateX(0);
+    opacity: 1;
+    margin-top: 35px; /* Increased space to accommodate larger circle */
   }
-
+  
   .hero-section:first-child .hero-content h1::before {
     content: '';
     position: absolute;
-    left: -60px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 120px;
-    height: 120px;
+    top: -65px; /* Moved higher from -55px */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px; /* Increased from 70px */
+    height: 90px; /* Increased from 70px */
     background: url('../images/eddina_circle.jpg') center center;
     background-size: cover;
     border-radius: 50%;
@@ -710,694 +597,19 @@ body, p, span, div, input, textarea, button, label, li {
   .hero-section:first-child .hero-content h1 .last-name {
     position: static;
     transform: none;
-    text-align: right;
+    text-align: left;
     display: block;
-    margin: 0.1rem 0;
-    width: 100%;
+    margin: 0;
+    width: auto;
+    flex: 1;
   }
   
-  .hero-section:first-child .hero-content h1 .middle-space {
-    display: none;
-  }
-  
-  .hero-section:first-child .hero-content h1 .flower-image {
-    display: block !important;
-    width: 24px !important;
-    height: 24px !important;
-    margin: 0.5rem 0 0 auto !important;
-    opacity: 1 !important;
-    flex-shrink: 0;
-    transform: translateY(0) !important;
-    animation: none !important;
-  }
-}
-
-/* Medium screens adjustments */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .hero-section:first-child .hero-content {
-    padding: 7rem 0 2rem 2rem;
-  }
-  
-  .hero-section:first-child .hero-content h1 {
-    width: 220px;
-    height: 110px;
-    font-size: 1rem;
-  }
-
-  .hero-section:first-child .hero-content h1::before {
-    left: -55px;
-    width: 110px;
-    height: 110px;
-  }
-  
-  .hero-section:first-child .hero-content h1 .flower-image {
-    width: 22px !important;
-    height: 22px !important;
-  }
-}
-
-/* Active section slides up to cover */
-.hero-section.active {
-  transform: translateY(0);
-}
-
-/* Set z-index based on section order - later sections appear on top */
-.hero-section:nth-child(1) { z-index: 1; }
-.hero-section:nth-child(2) { z-index: 2; }
-.hero-section:nth-child(3) { z-index: 3; }
-.hero-section:nth-child(4) { z-index: 4; }
-.hero-section:nth-child(5) { z-index: 5; }
-
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed; /* CSS-only parallax */
-
-  /* Smooth animation support */
-  will-change: transform;
-}
-
-/* Specific class added by JS to activate rotation animation */
-.parallax-bg.rotating {
-  /* Ensures GPU handles the animation smoothly */
-  transition: transform 0.1s ease-out;
-  transform-origin: center center;
-  scale: 1.0; /* No scaling to show full image */
-}
-
-/* Mobile background images */
-.featured-1 { background-image: url('../images/featured-1-mobile.jpg'); }
-.featured-2 { background-image: url('../images/featured-2-mobile.jpg'); }
-.featured-3 { background-image: url('../images/featured-3-mobile.jpg'); }
-.featured-4 { background-image: url('../images/featured-4-mobile.jpg'); }
-.featured-5 { background-image: url('../images/featured-5-mobile.jpg'); }
-
-/* Gallery hero specific mobile background */
-.gallery-bg { background-image: url('../images/featured-2-mobile.jpg'); }
-
-/* Desktop background images */
-@media (min-width: 769px) {
-  .featured-1 { background-image: url('../images/featured-1-desktop.jpg'); }
-  .featured-2 { background-image: url('../images/featured-2-desktop.jpg'); }
-  .featured-3 { background-image: url('../images/featured-3-desktop.jpg'); }
-  .featured-4 { background-image: url('../images/featured-4-desktop.jpg'); }
-  .featured-5 { background-image: url('../images/featured-5-desktop.jpg'); }
-  
-  /* Gallery hero specific desktop background */
-  .gallery-bg { background-image: url('../images/featured-2-desktop.jpg'); }
-}
-
-/* HERO BUTTON STYLE */
-.hero-btn {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.7em 2em;
-  background: rgba(255,255,255,0.13);
-  border: 1.5px solid #fff;
-  color: #fff;
-  border-radius: 30px;
-  text-decoration: none;
-  font-size: 1.1rem;
-  letter-spacing: 0.03em;
-  transition: background 0.2s, color 0.2s, border 0.2s;
-  backdrop-filter: blur(2px);
-}
-.hero-btn:hover,
-.hero-btn:focus {
-  background: #fff;
-  color: #222;
-  border-color: #fff;
-}
-
-/* HERO CONTENT (centered, fade-in) */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  padding: 2rem;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInHero 1.2s ease 0.2s forwards;
-}
-.hero-content h1, .hero-content h2 {
-  margin: 0 0 0.5em 0;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.18);
-}
-.hero-content p {
-  margin: 0 0 1em 0;
-  font-size: 1.15rem;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.13);
-}
-
-@keyframes fadeInHero {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* STACKING SLIDE ANIMATIONS FOR CONTENT (faster, simultaneous) */
-@keyframes slideUpFromBottom {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Left-to-right reveal animation for About/Contact containers */
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Letter animation - slide up individually */
-@keyframes letterSlideUp {
-  from {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Flower animation - fade in after the last letter */
-@keyframes fadeInFlower {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Paused animation classes for scroll control */
-.hero-section:first-child .hero-content h1.paused {
-  animation-play-state: paused;
-}
-
-.hero-section:first-child .hero-content h1 .letter.paused {
-  animation-play-state: paused;
-}
-
-.hero-section:first-child .hero-content h1 .flower-image.paused {
-  animation-play-state: paused;
-}
-
-@keyframes slideUpFromBottomTitle {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* HERO OVERLAY - Remove all overlays */
-.hero-section::before {
-  display: none;
-}
-
-/* HERO SECTION - Remove duplicate definition */
-
-/* PARALLAX BG */
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  will-change: transform;
-}
-
-/* PARALLAX ROTATION (optional, can be removed for static) */
-.parallax-bg.rotating {
-  transition: transform 0.1s ease-out;
-  transform-origin: center center;
-  scale: 1.0;
-}
-
-/* PARALLAX ANIMATIONS FOR CONTENT */
-@keyframes scrollInFromBottom {
-  from {
-    transform: translateY(100px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes scrollInFromBottomTitle {
-  from {
-    transform: translateY(80px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-/* First hero title - no animation on h1, only on letters, positioned at bottom */
-.hero-section:first-child .hero-content {
-  justify-content: flex-end;
-  padding-bottom: 4rem;
-  opacity: 1;
-  transform: translateY(0);
-  animation: fadeInHero 1.2s ease 0.2s forwards;
-}
-
-/* Desktop: positioned in left area with proper spacing */
-@media (min-width: 769px) {
-  .hero-section:first-child .hero-content {
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 8rem 0 2rem 3rem;
-  }
-  
-  .hero-section:first-child .hero-content h1 {
+  .hero-section:first-child .hero-content h1 .name-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    width: 240px;
-    height: 120px;
-    font-size: 1.1rem;
-    letter-spacing: 0.08em;
-    font-weight: 500;
-    font-family: 'Cinzel', serif;
-    color: #ffffff;
-    text-shadow: none;
-    padding: 1rem;
-    position: relative;
-    text-align: right;
-    background: rgba(97, 126, 153, 0.9);
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    margin: 0;
-    line-height: 1;
-    transform: translateX(-50px);
-    opacity: 0;
-    animation: slideInFromLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
-  }
-
-  .hero-section:first-child .hero-content h1::before {
-    content: '';
-    position: absolute;
-    left: -60px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 120px;
-    height: 120px;
-    background: url('../images/eddina_circle.jpg') center center;
-    background-size: cover;
-    border-radius: 50%;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  }
-  
-  .hero-section:first-child .hero-content h1 .first-name,
-  .hero-section:first-child .hero-content h1 .last-name {
-    position: static;
-    transform: none;
-    text-align: right;
-    display: block;
-    margin: 0.1rem 0;
-    width: 100%;
-  }
-  
-  .hero-section:first-child .hero-content h1 .middle-space {
-    display: none;
-  }
-  
-  .hero-section:first-child .hero-content h1 .flower-image {
-    display: block !important;
-    width: 24px !important;
-    height: 24px !important;
-    margin: 0.5rem 0 0 auto !important;
-    opacity: 1 !important;
-    flex-shrink: 0;
-    transform: translateY(0) !important;
-    animation: none !important;
-  }
-}
-
-/* Medium screens adjustments */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .hero-section:first-child .hero-content {
-    padding: 7rem 0 2rem 2rem;
-  }
-  
-  .hero-section:first-child .hero-content h1 {
-    width: 220px;
-    height: 110px;
-    font-size: 1rem;
-  }
-
-  .hero-section:first-child .hero-content h1::before {
-    left: -55px;
-    width: 110px;
-    height: 110px;
-  }
-  
-  .hero-section:first-child .hero-content h1 .flower-image {
-    width: 22px !important;
-    height: 22px !important;
-  }
-}
-
-/* Active section slides up to cover */
-.hero-section.active {
-  transform: translateY(0);
-}
-
-/* Set z-index based on section order - later sections appear on top */
-.hero-section:nth-child(1) { z-index: 1; }
-.hero-section:nth-child(2) { z-index: 2; }
-.hero-section:nth-child(3) { z-index: 3; }
-.hero-section:nth-child(4) { z-index: 4; }
-.hero-section:nth-child(5) { z-index: 5; }
-
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed; /* CSS-only parallax */
-
-  /* Smooth animation support */
-  will-change: transform;
-}
-
-/* Specific class added by JS to activate rotation animation */
-.parallax-bg.rotating {
-  /* Ensures GPU handles the animation smoothly */
-  transition: transform 0.1s ease-out;
-  transform-origin: center center;
-  scale: 1.0; /* No scaling to show full image */
-}
-
-/* Mobile background images */
-.featured-1 { background-image: url('../images/featured-1-mobile.jpg'); }
-.featured-2 { background-image: url('../images/featured-2-mobile.jpg'); }
-.featured-3 { background-image: url('../images/featured-3-mobile.jpg'); }
-.featured-4 { background-image: url('../images/featured-4-mobile.jpg'); }
-.featured-5 { background-image: url('../images/featured-5-mobile.jpg'); }
-
-/* Gallery hero specific mobile background */
-.gallery-bg { background-image: url('../images/featured-2-mobile.jpg'); }
-
-/* Desktop background images */
-@media (min-width: 769px) {
-  .featured-1 { background-image: url('../images/featured-1-desktop.jpg'); }
-  .featured-2 { background-image: url('../images/featured-2-desktop.jpg'); }
-  .featured-3 { background-image: url('../images/featured-3-desktop.jpg'); }
-  .featured-4 { background-image: url('../images/featured-4-desktop.jpg'); }
-  .featured-5 { background-image: url('../images/featured-5-desktop.jpg'); }
-  
-  /* Gallery hero specific desktop background */
-  .gallery-bg { background-image: url('../images/featured-2-desktop.jpg'); }
-}
-
-/* HERO BUTTON STYLE */
-.hero-btn {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.7em 2em;
-  background: rgba(255,255,255,0.13);
-  border: 1.5px solid #fff;
-  color: #fff;
-  border-radius: 30px;
-  text-decoration: none;
-  font-size: 1.1rem;
-  letter-spacing: 0.03em;
-  transition: background 0.2s, color 0.2s, border 0.2s;
-  backdrop-filter: blur(2px);
-}
-.hero-btn:hover,
-.hero-btn:focus {
-  background: #fff;
-  color: #222;
-  border-color: #fff;
-}
-
-/* HERO CONTENT (centered, fade-in) */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  padding: 2rem;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInHero 1.2s ease 0.2s forwards;
-}
-.hero-content h1, .hero-content h2 {
-  margin: 0 0 0.5em 0;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.18);
-}
-.hero-content p {
-  margin: 0 0 1em 0;
-  font-size: 1.15rem;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.13);
-}
-
-@keyframes fadeInHero {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* STACKING SLIDE ANIMATIONS FOR CONTENT (faster, simultaneous) */
-@keyframes slideUpFromBottom {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Left-to-right reveal animation for About/Contact containers */
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Letter animation - slide up individually */
-@keyframes letterSlideUp {
-  from {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Flower animation - fade in after the last letter */
-@keyframes fadeInFlower {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Paused animation classes for scroll control */
-.hero-section:first-child .hero-content h1.paused {
-  animation-play-state: paused;
-}
-
-.hero-section:first-child .hero-content h1 .letter.paused {
-  animation-play-state: paused;
-}
-
-.hero-section:first-child .hero-content h1 .flower-image.paused {
-  animation-play-state: paused;
-}
-
-@keyframes slideUpFromBottomTitle {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* HERO OVERLAY - Remove all overlays */
-.hero-section::before {
-  display: none;
-}
-
-/* HERO SECTION - Remove duplicate definition */
-
-/* PARALLAX BG */
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  will-change: transform;
-}
-
-/* PARALLAX ROTATION (optional, can be removed for static) */
-.parallax-bg.rotating {
-  transition: transform 0.1s ease-out;
-  transform-origin: center center;
-  scale: 1.0;
-}
-
-/* PARALLAX ANIMATIONS FOR CONTENT */
-@keyframes scrollInFromBottom {
-  from {
-    transform: translateY(100px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes scrollInFromBottomTitle {
-  from {
-    transform: translateY(80px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-/* First hero title - no animation on h1, only on letters, positioned at bottom */
-.hero-section:first-child .hero-content {
-  justify-content: flex-end;
-  padding-bottom: 4rem;
-  opacity: 1;
-  transform: translateY(0);
-  animation: fadeInHero 1.2s ease 0.2s forwards;
-}
-
-/* Desktop: positioned in left area with proper spacing */
-@media (min-width: 769px) {
-  .hero-section:first-child .hero-content {
-    justify-content: flex-start;
     align-items: flex-start;
-    padding: 8rem 0 2rem 3rem;
-  }
-  
-  .hero-section:first-child .hero-content h1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    width: 240px;
-    height: 120px;
-    font-size: 1.1rem;
-    letter-spacing: 0.08em;
-    font-weight: 500;
-    font-family: 'Cinzel', serif;
-    color: #ffffff;
-    text-shadow: none;
-    padding: 1rem;
-    position: relative;
-    text-align: right;
-    background: rgba(97, 126, 153, 0.9);
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    margin: 0;
-    line-height: 1;
-    transform: translateX(-50px);
-    opacity: 0;
-    animation: slideInFromLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
-  }
-
-  .hero-section:first-child .hero-content h1::before {
-    content: '';
-    position: absolute;
-    left: -60px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 120px;
-    height: 120px;
-    background: url('../images/eddina_circle.jpg') center center;
-    background-size: cover;
-    border-radius: 50%;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  }
-  
-  .hero-section:first-child .hero-content h1 .first-name,
-  .hero-section:first-child .hero-content h1 .last-name {
-    position: static;
-    transform: none;
-    text-align: right;
-    display: block;
-    margin: 0.1rem 0;
-    width: 100%;
+    flex: 1;
+    margin-right: 0.5rem;
   }
   
   .hero-section:first-child .hero-content h1 .middle-space {
@@ -1405,928 +617,394 @@ body, p, span, div, input, textarea, button, label, li {
   }
   
   .hero-section:first-child .hero-content h1 .flower-image {
-    display: block !important;
-    width: 24px !important;
-    height: 24px !important;
-    margin: 0.5rem 0 0 auto !important;
-    opacity: 1 !important;
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    opacity: 0;
     flex-shrink: 0;
-    transform: translateY(0) !important;
-    animation: none !important;
+    transform: translateY(20px);
+    align-self: center;
+  }
+  
+  /* Gallery showcase mobile - CARD STYLE LIKE DESKTOP */
+  .gallery-showcase-container {
+    background: rgba(97, 126, 153, 0.9);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 1.8rem 1.2rem;
+    text-align: center;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .gallery-showcase-container h2 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+  
+  .gallery-showcase-container p {
+    color: #ffffff;
+    margin-bottom: 1.2rem;
+  }
+  
+  .featured-works {
+    display: flex;
+    flex-direction: row;
+    gap: 0.9rem;
+    margin: 1.2rem 0;
+    justify-content: center;
+  }
+  
+  .featured-work {
+    width: 80px;
+    height: auto;
+  }
+  
+  /* About bio mobile - CARD STYLE LIKE DESKTOP */
+  .about-bio-container {
+    background: rgba(97, 126, 153, 0.9);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .about-bio-container h2 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .about-bio-container p {
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+  
+  /* CV showcase mobile - CARD STYLE LIKE DESKTOP */
+  .cv-showcase-container {
+    background: rgba(97, 126, 153, 0.9);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .cv-showcase-container h2 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .cv-showcase-container p {
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+  
+  .cv-preview {
+    margin: 1.5rem 0;
+  }
+  
+  .cv-preview-image img {
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  /* Contact form mobile - CARD STYLE LIKE DESKTOP */
+  .contact-form-container {
+    background: rgba(97, 126, 153, 0.9);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .contact-form-container h2 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .contact-form-container p {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Hero buttons mobile styling - MATCH DESKTOP STYLE */
+  .hero-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.5rem;
+    background: rgba(255,255,255,0.13);
+    border: 1.5px solid #fff;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1rem;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    backdrop-filter: blur(2px);
+  }
+  
+  .hero-btn:hover,
+  .hero-btn:focus {
+    background: #fff;
+    color: #222;
+    border-color: #fff;
   }
 }
 
-/* Medium screens adjustments */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .hero-section:first-child .hero-content {
-    padding: 7rem 0 2rem 2rem;
+/* Extra small mobile screens */
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 1rem 0.5rem;
   }
   
   .hero-section:first-child .hero-content h1 {
-    width: 220px;
-    height: 110px;
-    font-size: 1rem;
+    font-size: 0.75rem;
+    padding: 0.6rem 0.8rem;
+    width: 200px;
+    height: 80px;
+    margin-top: 20px; /* Adjust space for smaller circle */
   }
-
+  
   .hero-section:first-child .hero-content h1::before {
-    left: -55px;
-    width: 110px;
-    height: 110px;
+    width: 60px;
+    height: 60px;
+    top: -40px;
   }
   
   .hero-section:first-child .hero-content h1 .flower-image {
-    width: 22px !important;
-    height: 22px !important;
+    width: 16px;
+    height: 16px;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  .hero-section:first-child .hero-content h1 .name-container {
+    margin-right: 0.3rem;
+  }
+  
+  .gallery-showcase-container,
+  .about-bio-container,
+  .cv-showcase-container,
+  .contact-form-container {
+    max-width: 320px;
+    padding: 1.5rem 1rem;
+  }
+  
+  .gallery-showcase-container h2,
+  .about-bio-container h2,
+  .cv-showcase-container h2,
+  .contact-form-container h2 {
+    font-size: 1.4rem;
+  }
+  
+  .bio-summary {
+    font-size: 0.85rem;
+  }
+  
+  .hero-btn {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  
+  .cv-preview-image img {
+    max-width: 120px;
   }
 }
 
-/* Active section slides up to cover */
-.hero-section.active {
-  transform: translateY(0);
+/* Contact form styling within the card for all screen sizes */
+.contact-form-container .form-group {
+  margin-bottom: 1rem;
+  text-align: left;
 }
 
-/* Set z-index based on section order - later sections appear on top */
-.hero-section:nth-child(1) { z-index: 1; }
-.hero-section:nth-child(2) { z-index: 2; }
-.hero-section:nth-child(3) { z-index: 3; }
-.hero-section:nth-child(4) { z-index: 4; }
-.hero-section:nth-child(5) { z-index: 5; }
-
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed; /* CSS-only parallax */
-
-  /* Smooth animation support */
-  will-change: transform;
+.contact-form-container .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 0.9rem;
 }
 
-/* Specific class added by JS to activate rotation animation */
-.parallax-bg.rotating {
-  /* Ensures GPU handles the animation smoothly */
-  transition: transform 0.1s ease-out;
-  transform-origin: center center;
-  scale: 1.0; /* No scaling to show full image */
+.contact-form-container .form-group input,
+.contact-form-container .form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 200;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333333;
+  backdrop-filter: blur(5px);
+  box-sizing: border-box;
 }
 
-/* Mobile background images */
-.featured-1 { background-image: url('../images/featured-1-mobile.jpg'); }
-.featured-2 { background-image: url('../images/featured-2-mobile.jpg'); }
-.featured-3 { background-image: url('../images/featured-3-mobile.jpg'); }
-.featured-4 { background-image: url('../images/featured-4-mobile.jpg'); }
-.featured-5 { background-image: url('../images/featured-5-mobile.jpg'); }
-
-/* Gallery hero specific mobile background */
-.gallery-bg { background-image: url('../images/featured-2-mobile.jpg'); }
-
-/* Desktop background images */
-@media (min-width: 769px) {
-  .featured-1 { background-image: url('../images/featured-1-desktop.jpg'); }
-  .featured-2 { background-image: url('../images/featured-2-desktop.jpg'); }
-  .featured-3 { background-image: url('../images/featured-3-desktop.jpg'); }
-  .featured-4 { background-image: url('../images/featured-4-desktop.jpg'); }
-  .featured-5 { background-image: url('../images/featured-5-desktop.jpg'); }
-  
-  /* Gallery hero specific desktop background */
-  .gallery-bg { background-image: url('../images/featured-2-desktop.jpg'); }
+.contact-form-container .form-group input::placeholder,
+.contact-form-container .form-group textarea::placeholder {
+  color: rgba(0, 0, 0, 0.5);
 }
 
-/* HERO BUTTON STYLE */
-.hero-btn {
+.contact-form-container .form-group input:focus,
+.contact-form-container .form-group textarea:focus {
+  outline: none;
+  border-color: rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.contact-form-container button[type="submit"] {
   display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.7em 2em;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
   background: rgba(255,255,255,0.13);
   border: 1.5px solid #fff;
   color: #fff;
   border-radius: 30px;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1rem;
   letter-spacing: 0.03em;
   transition: background 0.2s, color 0.2s, border 0.2s;
   backdrop-filter: blur(2px);
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  cursor: pointer;
 }
-.hero-btn:hover,
-.hero-btn:focus {
+
+.contact-form-container button[type="submit"]:hover,
+.contact-form-container button[type="submit"]:focus {
   background: #fff;
   color: #222;
   border-color: #fff;
 }
 
-/* HERO CONTENT (centered, fade-in) */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  padding: 2rem;
+/* Hide the mobile-specific contact form since we're using unified styling */
+@media (max-width: 768px) {
+  .mobile-contact {
+    display: none;
+  }
+  
+  .desktop-contact {
+    display: block;
+  }
+}
+
+/* Show desktop contact on all screens now since we made it responsive */
+@media (min-width: 769px) {
+  .mobile-contact {
+    display: none;
+  }
+  
+  .desktop-contact {
+    display: block;
+  }
+}
+
+/* Mobile viewport fixes and optimizations */
+@media (max-width: 768px) {
+  /* Ensure full viewport coverage */
+  html, body {
+    width: 100vw;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Optimize touch interaction */
+  .hero-section {
+    touch-action: pan-y;
+  }
+  
+  /* Prevent text selection during swipes */
+  .hero-content {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Re-enable text selection for forms */
+  .contact-form-container input,
+  .contact-form-container textarea {
+    -webkit-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+    user-select: auto;
+  }
+  
+  /* Ensure mobile navigation works properly */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    background-color: rgba(134, 183, 218, 0.98);
+  }
+  
+  /* Mobile-specific navigation adjustments */
+  .nav-links {
+    z-index: 1002;
+  }
+  
+  /* Ensure smooth scrolling for forms */
+  .mobile-contact {
+    scroll-behavior: smooth;
+  }
+  
+  /* Fix any potential layout issues */
+  .mobile-contact .form-group input:focus,
+  .mobile-contact .form-group textarea:focus {
+    zoom: 1; /* Prevent iOS zoom on focus */
+    transform: scale(1);
+  }
+}
+
+/* Hero section container animations - triggered by JavaScript */
+.gallery-showcase-container.animate {
+  animation: slideUpFromBottom 0.8s ease 0.2s both;
+}
+
+.about-bio-container.animate {
+  animation: slideInFromLeft 0.8s ease 0.2s both;
+}
+
+.cv-showcase-container.animate {
+  animation: slideUpFromBottom 0.8s ease 0.2s both;
+}
+
+.contact-form-container.animate {
+  animation: slideInFromLeft 0.8s ease 0.2s both;
+}
+
+/* Ensure containers start hidden and become visible when animated */
+.gallery-showcase-container,
+.about-bio-container,
+.cv-showcase-container,
+.contact-form-container {
+  transform: translateY(100%);
   opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInHero 1.2s ease 0.2s forwards;
-}
-.hero-content h1, .hero-content h2 {
-  margin: 0 0 0.5em 0;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.18);
-}
-.hero-content p {
-  margin: 0 0 1em 0;
-  font-size: 1.15rem;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.13);
 }
 
-@keyframes fadeInHero {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* STACKING SLIDE ANIMATIONS FOR CONTENT (faster, simultaneous) */
-@keyframes slideUpFromBottom {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Left-to-right reveal animation for About/Contact containers */
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Letter animation - slide up individually */
-@keyframes letterSlideUp {
-  from {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Flower animation - fade in after the last letter */
-@keyframes fadeInFlower {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Paused animation classes for scroll control */
-.hero-section:first-child .hero-content h1.paused {
-  animation-play-state: paused;
-}
-
-.hero-section:first-child .hero-content h1 .letter.paused {
-  animation-play-state: paused;
-}
-
-.hero-section:first-child .hero-content h1 .flower-image.paused {
-  animation-play-state: paused;
-}
-
-@keyframes slideUpFromBottomTitle {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* HERO OVERLAY - Remove all overlays */
-.hero-section::before {
-  display: none;
-}
-
-/* HERO SECTION - Remove duplicate definition */
-
-/* PARALLAX BG */
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  will-change: transform;
-}
-
-/* PARALLAX ROTATION (optional, can be removed for static) */
-.parallax-bg.rotating {
-  transition: transform 0.1s ease-out;
-  transform-origin: center center;
-  scale: 1.0;
-}
-
-/* PARALLAX ANIMATIONS FOR CONTENT */
-@keyframes scrollInFromBottom {
-  from {
-    transform: translateY(100px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes scrollInFromBottomTitle {
-  from {
-    transform: translateY(80px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-/* First hero title - no animation on h1, only on letters, positioned at bottom */
-.hero-section:first-child .hero-content {
-  justify-content: flex-end;
-  padding-bottom: 4rem;
+.gallery-showcase-container.animate,
+.about-bio-container.animate,
+.cv-showcase-container.animate,
+.contact-form-container.animate {
+  transform: translateY(0);
   opacity: 1;
-  transform: translateY(0);
-  animation: fadeInHero 1.2s ease 0.2s forwards;
 }
-
-/* Desktop: positioned in left area with proper spacing */
-@media (min-width: 769px) {
-  .hero-section:first-child .hero-content {
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 8rem 0 2rem 3rem;
-  }
-  
-  .hero-section:first-child .hero-content h1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    width: 240px;
-    height: 120px;
-    font-size: 1.1rem;
-    letter-spacing: 0.08em;
-    font-weight: 500;
-    font-family: 'Cinzel', serif;
-    color: #ffffff;
-    text-shadow: none;
-    padding: 1rem;
-    position: relative;
-    text-align: right;
-    background: rgba(97, 126, 153, 0.9);
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    margin: 0;
-    line-height: 1;
-    transform: translateX(-50px);
-    opacity: 0;
-    animation: slideInFromLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
-  }
-
-  .hero-section:first-child .hero-content h1::before {
-    content: '';
-    position: absolute;
-    left: -60px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 120px;
-    height: 120px;
-    background: url('../images/eddina_circle.jpg') center center;
-    background-size: cover;
-    border-radius: 50%;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  }
-  
-  .hero-section:first-child .hero-content h1 .first-name,
-  .hero-section:first-child .hero-content h1 .last-name {
-    position: static;
-    transform: none;
-    text-align: right;
-    display: block;
-    margin: 0.1rem 0;
-    width: 100%;
-  }
-  
-  .hero-section:first-child .hero-content h1 .middle-space {
-    display: none;
-  }
-  
-  .hero-section:first-child .hero-content h1 .flower-image {
-    display: block !important;
-    width: 24px !important;
-    height: 24px !important;
-    margin: 0.5rem 0 0 auto !important;
-    opacity: 1 !important;
-    flex-shrink: 0;
-    transform: translateY(0) !important;
-    animation: none !important;
-  }
-}
-
-/* Medium screens adjustments */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .hero-section:first-child .hero-content {
-    padding: 7rem 0 2rem 2rem;
-  }
-  
-  .hero-section:first-child .hero-content h1 {
-    width: 220px;
-    height: 110px;
-    font-size: 1rem;
-  }
-
-  .hero-section:first-child .hero-content h1::before {
-    left: -55px;
-    width: 110px;
-    height: 110px;
-  }
-  
-  .hero-section:first-child .hero-content h1 .flower-image {
-    width: 22px !important;
-    height: 22px !important;
-  }
-}
-
-/* Active section slides up to cover */
-.hero-section.active {
-  transform: translateY(0);
-}
-
-/* Set z-index based on section order - later sections appear on top */
-.hero-section:nth-child(1) { z-index: 1; }
-.hero-section:nth-child(2) { z-index: 2; }
-.hero-section:nth-child(3) { z-index: 3; }
-.hero-section:nth-child(4) { z-index: 4; }
-.hero-section:nth-child(5) { z-index: 5; }
-
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed; /* CSS-only parallax */
-
-  /* Smooth animation support */
-  will-change: transform;
-}
-
-/* Specific class added by JS to activate rotation animation */
-.parallax-bg.rotating {
-  /* Ensures GPU handles the animation smoothly */
-  transition: transform 0.1s ease-out;
-  transform-origin: center center;
-  scale: 1.0; /* No scaling to show full image */
-}
-
-/* Mobile background images */
-.featured-1 { background-image: url('../images/featured-1-mobile.jpg'); }
-.featured-2 { background-image: url('../images/featured-2-mobile.jpg'); }
-.featured-3 { background-image: url('../images/featured-3-mobile.jpg'); }
-.featured-4 { background-image: url('../images/featured-4-mobile.jpg'); }
-.featured-5 { background-image: url('../images/featured-5-mobile.jpg'); }
-
-/* Gallery hero specific mobile background */
-.gallery-bg { background-image: url('../images/featured-2-mobile.jpg'); }
-
-/* Desktop background images */
-@media (min-width: 769px) {
-  .featured-1 { background-image: url('../images/featured-1-desktop.jpg'); }
-  .featured-2 { background-image: url('../images/featured-2-desktop.jpg'); }
-  .featured-3 { background-image: url('../images/featured-3-desktop.jpg'); }
-  .featured-4 { background-image: url('../images/featured-4-desktop.jpg'); }
-  .featured-5 { background-image: url('../images/featured-5-desktop.jpg'); }
-  
-  /* Gallery hero specific desktop background */
-  .gallery-bg { background-image: url('../images/featured-2-desktop.jpg'); }
-}
-
-/* HERO BUTTON STYLE */
-.hero-btn {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.7em 2em;
-  background: rgba(255,255,255,0.13);
-  border: 1.5px solid #fff;
-  color: #fff;
-  border-radius: 30px;
-  text-decoration: none;
-  font-size: 1.1rem;
-  letter-spacing: 0.03em;
-  transition: background 0.2s, color 0.2s, border 0.2s;
-  backdrop-filter: blur(2px);
-}
-.hero-btn:hover,
-.hero-btn:focus {
-  background: #fff;
-  color: #222;
-  border-color: #fff;
-}
-
-/* HERO CONTENT (centered, fade-in) */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  padding: 2rem;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInHero 1.2s ease 0.2s forwards;
-}
-.hero-content h1, .hero-content h2 {
-  margin: 0 0 0.5em 0;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.18);
-}
-.hero-content p {
-  margin: 0 0 1em 0;
-  font-size: 1.15rem;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.13);
-}
-
-@keyframes fadeInHero {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* STACKING SLIDE ANIMATIONS FOR CONTENT (faster, simultaneous) */
-@keyframes slideUpFromBottom {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Left-to-right reveal animation for About/Contact containers */
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Letter animation - slide up individually */
-@keyframes letterSlideUp {
-  from {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Flower animation - fade in after the last letter */
-@keyframes fadeInFlower {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Paused animation classes for scroll control */
-.hero-section:first-child .hero-content h1.paused {
-  animation-play-state: paused;
-}
-
-.hero-section:first-child .hero-content h1 .letter.paused {
-  animation-play-state: paused;
-}
-
-.hero-section:first-child .hero-content h1 .flower-image.paused {
-  animation-play-state: paused;
-}
-
-@keyframes slideUpFromBottomTitle {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* HERO OVERLAY - Remove all overlays */
-.hero-section::before {
-  display: none;
-}
-
-/* HERO SECTION - Remove duplicate definition */
-
-/* PARALLAX BG */
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  will-change: transform;
-}
-
-/* PARALLAX ROTATION (optional, can be removed for static) */
-.parallax-bg.rotating {
-  transition: transform 0.1s ease-out;
-  transform-origin: center center;
-  scale: 1.0;
-}
-
-/* PARALLAX ANIMATIONS FOR CONTENT */
-@keyframes scrollInFromBottom {
-  from {
-    transform: translateY(100px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes scrollInFromBottomTitle {
-  from {
-    transform: translateY(80px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-/* First hero title - no animation on h1, only on letters, positioned at bottom */
-.hero-section:first-child .hero-content {
-  justify-content: flex-end;
-  padding-bottom: 4rem;
-  opacity: 1;
-  transform: translateY(0);
-  animation: fadeInHero 1.2s ease 0.2s forwards;
-}
-
-/* Desktop: positioned in left area with proper spacing */
-@media (min-width: 769px) {
-  .hero-section:first-child .hero-content {
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 8rem 0 2rem 3rem;
-  }
-  
-  .hero-section:first-child .hero-content h1 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    width: 240px;
-    height: 120px;
-    font-size: 1.1rem;
-    letter-spacing: 0.08em;
-    font-weight: 500;
-    font-family: 'Cinzel', serif;
-    color: #ffffff;
-    text-shadow: none;
-    padding: 1rem;
-    position: relative;
-    text-align: right;
-    background: rgba(97, 126, 153, 0.9);
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    margin: 0;
-    line-height: 1;
-    transform: translateX(-50px);
-    opacity: 0;
-    animation: slideInFromLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
-  }
-
-  .hero-section:first-child .hero-content h1::before {
-    content: '';
-    position: absolute;
-    left: -60px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 120px;
-    height: 120px;
-    background: url('../images/eddina_circle.jpg') center center;
-    background-size: cover;
-    border-radius: 50%;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  }
-  
-  .hero-section:first-child .hero-content h1 .first-name,
-  .hero-section:first-child .hero-content h1 .last-name {
-    position: static;
-    transform: none;
-    text-align: right;
-    display: block;
-    margin: 0.1rem 0;
-    width: 100%;
-  }
-  
-  .hero-section:first-child .hero-content h1 .middle-space {
-    display: none;
-  }
-  
-  .hero-section:first-child .hero-content h1 .flower-image {
-    display: block !important;
-    width: 24px !important;
-    height: 24px !important;
-    margin: 0.5rem 0 0 auto !important;
-    opacity: 1 !important;
-    flex-shrink: 0;
-    transform: translateY(0) !important;
-    animation: none !important;
-  }
-}
-
-/* Medium screens adjustments */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .hero-section:first-child .hero-content {
-    padding: 7rem 0 2rem 2rem;
-  }
-  
-  .hero-section:first-child .hero-content h1 {
-    width: 220px;
-    height: 110px;
-    font-size: 1rem;
-  }
-
-  .hero-section:first-child .hero-content h1::before {
-    left: -55px;
-    width: 110px;
-    height: 110px;
-  }
-  
-  .hero-section:first-child .hero-content h1 .flower-image {
-    width: 22px !important;
-    height: 22px !important;
-  }
-}
-
-/* Active section slides up to cover */
-.hero-section.active {
-  transform: translateY(0);
-}
-
-/* Set z-index based on section order - later sections appear on top */
-.hero-section:nth-child(1) { z-index: 1; }
-.hero-section:nth-child(2) { z-index: 2; }
-.hero-section:nth-child(3) { z-index: 3; }
-.hero-section:nth-child(4) { z-index: 4; }
-.hero-section:nth-child(5) { z-index: 5; }
-
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed; /* CSS-only parallax */
-
-  /* Smooth animation support */
-  will-change: transform;
-}
-
-/* Specific class added by JS to activate rotation animation */
-.parallax-bg.rotating {
-  /* Ensures GPU handles the animation smoothly */
-  transition: transform 0.1s ease-out;
-  transform-origin: center center;
-  scale: 1.0; /* No scaling to show full image */
-}
-
-/* Mobile background images */
-.featured-1 { background-image: url('../images/featured-1-mobile.jpg'); }
-.featured-2 { background-image: url('../images/featured-2-mobile.jpg'); }
-.featured-3 { background-image: url('../images/featured-3-mobile.jpg'); }
-.featured-4 { background-image: url('../images/featured-4-mobile.jpg'); }
-.featured-5 { background-image: url('../images/featured-5-mobile.jpg'); }
-
-/* Gallery hero specific mobile background */
-.gallery-bg { background-image: url('../images/featured-2-mobile.jpg'); }
-
-/* Desktop background images */
-@media (min-width: 769px) {
-  .featured-1 { background-image: url('../images/featured-1-desktop.jpg'); }
-  .featured-2 { background-image: url('../images/featured-2-desktop.jpg'); }
-  .featured-3 { background-image: url('../images/featured-3-desktop.jpg'); }
-  .featured-4 { background-image: url('../images/featured-4-desktop.jpg'); }
-  .featured-5 { background-image: url('../images/featured-5-desktop.jpg'); }
-  
-  /* Gallery hero specific desktop background */
-  .gallery-bg { background-image: url('../images/featured-2-desktop.jpg'); }
-}
-
-/* HERO BUTTON STYLE */
-.hero-btn {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.7em 2em;
-  background: rgba(255,255,255,0.13);
-  border: 1.5px solid #fff;
-  color: #fff;
-  border-radius: 30px;
-  text-decoration: none;
-  font-size: 1.1rem;
-  letter-spacing: 0.03em;
-  transition: background 0.2s, color 0.2s, border 0.2s;
-  backdrop-filter: blur(2px);
-}
-.hero-btn:hover,
-.hero-btn:focus {
-  background: #fff;
-  color: #222;
-  border-color: #fff;
-}
-
-/* HERO CONTENT (centered, fade-in) */
-.hero-content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  padding: 2rem;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInHero 1.2s ease 0.2s forwards;
-}
-.hero-content h1, .hero-content h2 {
-  margin: 0 0 0.5em 0;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.18);
-}
-.hero-content p {
-  margin: 0 0 1em 0;
-  font-size: 1.15rem;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.13);
-}
-
-@keyframes fadeInHero {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* STACKING SLIDE ANIMATIONS FOR CONTENT (faster, simultaneous) */
-@keyframes slideUpFromBottom {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Left-to-right reveal animation for About/Contact containers */
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Letter animation - slide up individually */
-@keyframes letterSlideUp {
-  from {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Flower animation - fade in after the last letter */
-@keyframes fadeInFlower {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Paused animation classes for scroll control */
-.hero-section:first-child .hero-content h1.paused {
-  animation-play-state: paused;
-}
-
-.hero-section:first-child .hero-content h1 .letter.paused {
-  animation-play-state: paused;
-}
-
-.hero-section:first-child .hero-content h1 .flower-image.paused {
-  animation-play-state: paused;
-}
-
-@keyframes slideUpFromBottomTitle {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* HERO OVERLAY - Remove all overlays */
-.hero-section::before {
-  display: none;
-}
-
-/* HERO SECTION - Remove duplicate definition */
-
-/* PARALLAX BG */
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  will-change:
