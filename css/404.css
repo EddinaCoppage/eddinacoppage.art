@@ -20,7 +20,7 @@
 */
 .not-found-container h1 {
     font-size: 6rem;
-    color: #3b3b3b;
+    color: #6f8fa4;
     margin-bottom: 1rem;
 }
 
@@ -61,6 +61,7 @@
     background-color: #3b3b3b;
     color: #FFFFFF;
     font-family: 'Cinzel', serif;
+    font-weight: 700;
     transition: all 0.3s ease;
 }
 

@@ -42,13 +42,28 @@
 
 /*
    This rule targets each individual item in the gallery grid.
-   - position: relative; Allows for absolute positioning of child elements.
+   - display: flex; Creates a flex container for vertical layout.
+   - flex-direction: column; Stacks image and text vertically.
    - overflow: hidden; Hides any content that overflows the container.
 */
 .gallery-item {
-    position: relative;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInFromLeft 0.8s ease-out forwards;
 }
+
+/* Staggered animation delays for gallery items */
+.gallery-item:nth-child(1) { animation-delay: 0.1s; }
+.gallery-item:nth-child(2) { animation-delay: 0.2s; }
+.gallery-item:nth-child(3) { animation-delay: 0.3s; }
+.gallery-item:nth-child(4) { animation-delay: 0.4s; }
+.gallery-item:nth-child(5) { animation-delay: 0.5s; }
+.gallery-item:nth-child(6) { animation-delay: 0.6s; }
 
 /*
    This rule targets the images within the gallery items.
@@ -73,22 +88,18 @@
 
 /*
    This rule targets the information container for each gallery item.
-   - position: absolute; Positions the info container relative to the gallery item.
-   - bottom: 0; Aligns the info container to the bottom of the gallery item.
-   - left: 0; Aligns the info container to the left of the gallery item.
-   - width: 100%; Makes the info container span the full width of the gallery item.
-   - background-color: rgba(255, 255, 255, 0.9); Adds a semi-transparent white background.
-   - padding: 1rem; Adds padding inside the info container.
-   - text-align: center; Centers the text inside the info container.
+   - position: static; Removes absolute positioning to place below image.
+   - padding: 0.75rem 0; Adds vertical padding above and below text.
+   - text-align: center; Centers the text.
+   - background: none; Removes background overlay.
+   - color: inherit; Uses default text color.
 */
 .gallery-item-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 1rem;
+    position: static;
+    padding: 0.75rem 0;
     text-align: center;
+    background: none;
+    color: inherit;
 }
 
 /*

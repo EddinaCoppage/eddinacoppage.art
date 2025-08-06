@@ -195,6 +195,20 @@
 }
 
 /*
+   This rule targets images within the work-main-image container.
+   - max-width: 100%; Ensures images don't exceed container width.
+   - height: auto; Maintains aspect ratio.
+   - display: block; Removes default inline spacing.
+   - margin: 0 auto; Centers the image.
+*/
+.work-main-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/*
    This rule targets the container for the 3D model viewer.
    - width: 100%;
    - height: 500px;

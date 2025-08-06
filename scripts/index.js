@@ -15,9 +15,42 @@ document.addEventListener("DOMContentLoaded", () => {
   const SCROLL_THRESHOLD = 75; // Increased threshold to 75px to reduce sensitivity
   const TOUCH_THRESHOLD = 120; // Separate, higher threshold for touch gestures
 
-  // Initialize - show first section
-  updateSections();
+  // Animation reset and trigger functions
+  function resetHeroTitleAnimation() {
+    const heroTitle = document.querySelector('.hero-section:first-child .hero-content h1');
+    const letters = document.querySelectorAll('.hero-section:first-child .hero-content h1 .letter');
+    const flower = document.querySelector('.hero-section:first-child .hero-content h1 .flower-image');
+    
+    if (heroTitle) {
+      heroTitle.style.animation = 'none';
+      heroTitle.offsetHeight; // Trigger reflow
+      heroTitle.style.animation = 'slideUpFromBottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both';
+    }
+    
+    letters.forEach((letter, index) => {
+      const delay = index < 6 ? 0.2 + (index * 0.15) : 1.25 + ((index - 6) * 0.15);
+      letter.style.animation = 'none';
+      letter.offsetHeight; // Trigger reflow
+      letter.style.animation = `letterSlideUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}s both`;
+    });
+    
+    if (flower) {
+      flower.style.animation = 'none';
+      flower.offsetHeight; // Trigger reflow
+      flower.style.animation = 'fadeInFlower 0.6s ease 2.0s both';
+    }
+  }
   
+  function triggerHeroAnimationOnScroll() {
+    if (currentSection === 0) {
+      resetHeroTitleAnimation();
+    }
+  }
+
+  // Initialize - show first section and trigger animations
+  updateSections();
+  setTimeout(resetHeroTitleAnimation, 100); // Small delay to ensure DOM is ready
+
   // Add parallax scroll effect for content elements
   let parallaxLastScrollTime = 0;
   function handleContentParallax() {
@@ -237,6 +270,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentSection < heroSections.length - 1) {
       currentSection++;
       updateSections();
+      // Trigger hero animation if returning to first section
+      triggerHeroAnimationOnScroll();
     }
   }
 
@@ -244,6 +279,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentSection > 0) {
       currentSection--;
       updateSections();
+      // Trigger hero animation if returning to first section
+      triggerHeroAnimationOnScroll();
     }
   }
 
