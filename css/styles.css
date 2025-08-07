@@ -18,6 +18,8 @@
 
 html {
     font-size: 100%;
+    background-color: #f1f5f8;
+    height: 100%;
 }
 
 body {
@@ -26,7 +28,8 @@ body {
     color: #000000;
     background-color: #FFFFFF;
     line-height: 1.6;
-    margin-top: 80px; /* Adjust based on header height */
+    margin-top: 65px; /* Reduced from 80px to match smaller header */
+    min-height: calc(100vh - 65px);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -44,7 +47,7 @@ p, span, div, input, textarea, button, label, li {
 
 a {
     color: inherit;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 img {
@@ -52,38 +55,13 @@ img {
     height: auto;
 }
 
-/*
-   Main content wrapper to provide consistent padding and max-width.
-*/
+/* Make main content area flexible to push footer down */
 main {
-  padding: 0;
-  margin: 0;
-  max-width: none;
+    padding: 0;
+    margin: 0;
+    max-width: none;
+    min-height: calc(100vh - 65px - 80px); /* Full height minus header and footer space */
 }
-
-/* Responsive main content padding for collections pages */
-body:not(.index-page) main {
-  padding: 1rem;
-}
-
-@media (min-width: 769px) {
-  body:not(.index-page) main {
-    padding: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  body:not(.index-page) main {
-    padding: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  body:not(.index-page) main {
-    padding: 1rem;
-  }
-}
-
 
 /*
    Header and Footer styles
@@ -114,23 +92,16 @@ header.scrolled {
 }
 
 /* Add top margin to body to account for fixed header */
-body {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 200;
-    color: #000000;
-    background-color: #FFFFFF;
-    line-height: 1.6;
-    margin-top: 65px; /* Reduced from 80px to match smaller header */
-}
 
 footer {
-    padding: 1rem 2rem;
-    background-color: #FFFFFF;
+    padding: 2rem 2rem;
+    background-color: #f1f5f8;
     border-top: 1px solid #bbbbbb;
     border-bottom: none;
     text-align: center;
     font-size: 0.9rem;
     color: #3b3b3b;
+    margin-top: auto;
 }
 
 /*
@@ -449,4 +420,27 @@ nav {
         transform: translateY(-1px);
         color: #3b3b3b;
     }
+}
+
+/* Responsive main content padding for collections pages */
+body:not(.index-page) main {
+  padding: 1rem;
+}
+
+@media (min-width: 769px) {
+  body:not(.index-page) main {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body:not(.index-page) main {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body:not(.index-page) main {
+    padding: 1rem;
+  }
 }

@@ -55,43 +55,43 @@ document.addEventListener("DOMContentLoaded", () => {
   let parallaxLastScrollTime = 0;
   function handleContentParallax() {
     const now = Date.now();
-    if (now - parallaxLastScrollTime < 16) return; // Throttle to ~60fps
+    if (now - parallaxLastScrollTime < 8) return; // Reduced throttle to ~120fps for smoother animation
     parallaxLastScrollTime = now;
 
     const activeSection = heroSections[currentSection];
     if (!activeSection) return;
 
-    // Apply subtle parallax to gallery and contact containers
+    // Apply much faster parallax to gallery and contact containers
     if (activeSection.querySelector('.gallery-showcase-container')) {
       const container = activeSection.querySelector('.gallery-showcase-container');
-      const parallaxOffset = Math.sin(now * 0.0005) * 2; // Slower, subtle movement
+      const parallaxOffset = Math.sin(now * 0.008) * 5; // Much faster and more noticeable movement
       container.style.transform = `translateY(${parallaxOffset}px)`;
     }
 
     if (activeSection.querySelector('.contact-form-container')) {
       const container = activeSection.querySelector('.contact-form-container.desktop-contact');
       if (container) {
-        const parallaxOffset = Math.sin(now * 0.0005) * 2; // Slower, subtle movement
+        const parallaxOffset = Math.sin(now * 0.008) * 5; // Much faster and more noticeable movement
         container.style.transform = `translateY(${parallaxOffset}px)`;
       }
       // Mobile contact form gets same parallax but only if visible
       const mobileContainer = activeSection.querySelector('.contact-form-container.mobile-contact');
       if (mobileContainer && window.innerWidth <= 768) {
-        const parallaxOffset = Math.sin(now * 0.0005) * 2; // Same parallax as desktop
+        const parallaxOffset = Math.sin(now * 0.008) * 5; // Same much faster parallax as desktop
         mobileContainer.style.transform = `translateY(${parallaxOffset}px)`;
       }
     }
 
     if (activeSection.querySelector('.cv-showcase-container')) {
       const container = activeSection.querySelector('.cv-showcase-container');
-      const parallaxOffset = Math.sin(now * 0.0005) * 2; // Slower, subtle movement
+      const parallaxOffset = Math.sin(now * 0.008) * 5; // Much faster and more noticeable movement
       container.style.transform = `translateY(${parallaxOffset}px)`;
     }
 
-    // Apply subtle parallax to main title
+    // Apply faster parallax to main title
     if (currentSection === 0) {
       const title = activeSection.querySelector('h1');
-      const parallaxOffset = Math.sin(now * 0.0003) * 3; // Even slower for title
+      const parallaxOffset = Math.sin(now * 0.006) * 6; // Much faster for title with more movement
       if (title) title.style.transform = `translateY(${parallaxOffset}px)`;
     }
   }

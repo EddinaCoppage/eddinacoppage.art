@@ -5,6 +5,11 @@ html, body {
   overflow-x: hidden;
   height: 100vh;
   overflow-y: hidden; /* Prevent default scrolling */
+  background-color: #FFFFFF;
+}
+
+html {
+  background-color: #f1f4f8;
 }
 
 main {
@@ -345,7 +350,7 @@ body, p, span, div, input, textarea, button, label, li {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     margin: 0;
     line-height: 1;
-    transform: translateX(-50px);
+    transform: translateX(-30px);
     opacity: 0;
     animation: slideInFromLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s both;
   }
@@ -353,7 +358,7 @@ body, p, span, div, input, textarea, button, label, li {
   .hero-section:first-child .hero-content h1::before {
     content: '';
     position: absolute;
-    left: -20px;
+    left: -40px;
     top: 50%;
     transform: translateY(-50%);
     width: 120px;
@@ -962,6 +967,11 @@ body, p, span, div, input, textarea, button, label, li {
     width: 100vw;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+    background-color: #FFFFFF;
+  }
+  
+  html {
+    background-color: #f1f4f8;
   }
   
   /* Optimize touch interaction */
